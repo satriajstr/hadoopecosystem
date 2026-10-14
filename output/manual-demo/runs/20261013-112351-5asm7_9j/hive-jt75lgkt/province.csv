@@ -1,0 +1,13 @@
+province,eligible_children,dose1_children,dose3_children,dropout_children,missed_dose3,never_started_dose1,coverage_pct,dropout_pct
+Sumatera Selatan,1670,1226,762,464,908,444,45.63,37.85
+Sulawesi Selatan,1668,1225,766,459,902,443,45.92,37.47
+Bali,1670,1226,775,451,895,444,46.41,36.79
+Jawa Timur,1670,1227,790,437,880,443,47.31,35.62
+Jawa Barat,1670,1497,1096,401,574,173,65.63,26.79
+Banten,1670,1497,1102,395,568,173,65.99,26.39
+Sumatera Utara,1670,1497,1106,391,564,173,66.23,26.12
+Lampung,1669,1496,1111,385,558,173,66.57,25.74
+DI Yogyakarta,1670,910,782,128,888,760,46.83,14.07
+Kalimantan Barat,1668,922,797,125,871,746,47.78,13.56
+Sumatera Barat,1670,919,800,119,870,751,47.9,12.95
+Jawa Tengah,1670,829,768,61,902,841,45.99,7.36

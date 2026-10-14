@@ -1,0 +1,684 @@
+{
+  "runtime": "SQLite",
+  "synthetic": true,
+  "cohort": 2023,
+  "results": [
+    {
+      "province": "Jawa Tengah",
+      "district": "Kabupaten Semarang",
+      "eligible_children": 832,
+      "dose1_children": 0,
+      "dose3_children": 0,
+      "coverage_pct": 0.0,
+      "dropout_pct": null,
+      "missed_dose3": 832
+    },
+    {
+      "province": "DI Yogyakarta",
+      "district": "Kabupaten Sleman",
+      "eligible_children": 832,
+      "dose1_children": 81,
+      "dose3_children": 11,
+      "coverage_pct": 1.32,
+      "dropout_pct": 86.42,
+      "missed_dose3": 821
+    },
+    {
+      "province": "Kalimantan Barat",
+      "district": "Kabupaten Kubu Raya",
+      "eligible_children": 831,
+      "dose1_children": 94,
+      "dose3_children": 22,
+      "coverage_pct": 2.65,
+      "dropout_pct": 76.6,
+      "missed_dose3": 809
+    },
+    {
+      "province": "Sumatera Barat",
+      "district": "Kabupaten Agam",
+      "eligible_children": 832,
+      "dose1_children": 90,
+      "dose3_children": 27,
+      "coverage_pct": 3.25,
+      "dropout_pct": 70.0,
+      "missed_dose3": 805
+    },
+    {
+      "province": "Bali",
+      "district": "Kabupaten Gianyar",
+      "eligible_children": 838,
+      "dose1_children": 572,
+      "dose3_children": 256,
+      "coverage_pct": 30.55,
+      "dropout_pct": 55.24,
+      "missed_dose3": 582
+    },
+    {
+      "province": "Sumatera Selatan",
+      "district": "Kabupaten Ogan Komering Ilir",
+      "eligible_children": 838,
+      "dose1_children": 572,
+      "dose3_children": 259,
+      "coverage_pct": 30.91,
+      "dropout_pct": 54.72,
+      "missed_dose3": 579
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "district": "Kabupaten Maros",
+      "eligible_children": 837,
+      "dose1_children": 572,
+      "dose3_children": 261,
+      "coverage_pct": 31.18,
+      "dropout_pct": 54.37,
+      "missed_dose3": 576
+    },
+    {
+      "province": "Jawa Timur",
+      "district": "Kabupaten Jember",
+      "eligible_children": 838,
+      "dose1_children": 573,
+      "dose3_children": 273,
+      "coverage_pct": 32.58,
+      "dropout_pct": 52.36,
+      "missed_dose3": 565
+    },
+    {
+      "province": "Jawa Barat",
+      "district": "Kabupaten Bandung",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 419,
+      "coverage_pct": 50.36,
+      "dropout_pct": 43.91,
+      "missed_dose3": 413
+    },
+    {
+      "province": "Banten",
+      "district": "Kabupaten Tangerang",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 422,
+      "coverage_pct": 50.72,
+      "dropout_pct": 43.51,
+      "missed_dose3": 410
+    },
+    {
+      "province": "Sumatera Utara",
+      "district": "Kabupaten Deli Serdang",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 424,
+      "coverage_pct": 50.96,
+      "dropout_pct": 43.24,
+      "missed_dose3": 408
+    },
+    {
+      "province": "Lampung",
+      "district": "Kabupaten Lampung Selatan",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 427,
+      "coverage_pct": 51.32,
+      "dropout_pct": 42.84,
+      "missed_dose3": 405
+    },
+    {
+      "province": "Sumatera Selatan",
+      "district": "Kabupaten Banyuasin",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 503,
+      "coverage_pct": 60.46,
+      "dropout_pct": 23.09,
+      "missed_dose3": 329
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "district": "Kabupaten Gowa",
+      "eligible_children": 831,
+      "dose1_children": 653,
+      "dose3_children": 505,
+      "coverage_pct": 60.77,
+      "dropout_pct": 22.66,
+      "missed_dose3": 326
+    },
+    {
+      "province": "Jawa Timur",
+      "district": "Kabupaten Malang",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 517,
+      "coverage_pct": 62.14,
+      "dropout_pct": 20.95,
+      "missed_dose3": 315
+    },
+    {
+      "province": "Bali",
+      "district": "Kabupaten Badung",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 519,
+      "coverage_pct": 62.38,
+      "dropout_pct": 20.64,
+      "missed_dose3": 313
+    },
+    {
+      "province": "Jawa Barat",
+      "district": "Kabupaten Bogor",
+      "eligible_children": 838,
+      "dose1_children": 750,
+      "dose3_children": 677,
+      "coverage_pct": 80.79,
+      "dropout_pct": 9.73,
+      "missed_dose3": 161
+    },
+    {
+      "province": "Banten",
+      "district": "Kabupaten Serang",
+      "eligible_children": 838,
+      "dose1_children": 750,
+      "dose3_children": 680,
+      "coverage_pct": 81.15,
+      "dropout_pct": 9.33,
+      "missed_dose3": 158
+    },
+    {
+      "province": "Sumatera Utara",
+      "district": "Kabupaten Langkat",
+      "eligible_children": 838,
+      "dose1_children": 750,
+      "dose3_children": 682,
+      "coverage_pct": 81.38,
+      "dropout_pct": 9.07,
+      "missed_dose3": 156
+    },
+    {
+      "province": "Lampung",
+      "district": "Kabupaten Lampung Tengah",
+      "eligible_children": 837,
+      "dose1_children": 749,
+      "dose3_children": 684,
+      "coverage_pct": 81.72,
+      "dropout_pct": 8.68,
+      "missed_dose3": 153
+    },
+    {
+      "province": "Jawa Tengah",
+      "district": "Kabupaten Banyumas",
+      "eligible_children": 838,
+      "dose1_children": 829,
+      "dose3_children": 768,
+      "coverage_pct": 91.65,
+      "dropout_pct": 7.36,
+      "missed_dose3": 70
+    },
+    {
+      "province": "DI Yogyakarta",
+      "district": "Kabupaten Bantul",
+      "eligible_children": 838,
+      "dose1_children": 829,
+      "dose3_children": 771,
+      "coverage_pct": 92.0,
+      "dropout_pct": 7.0,
+      "missed_dose3": 67
+    },
+    {
+      "province": "Sumatera Barat",
+      "district": "Kabupaten Tanah Datar",
+      "eligible_children": 838,
+      "dose1_children": 829,
+      "dose3_children": 773,
+      "coverage_pct": 92.24,
+      "dropout_pct": 6.76,
+      "missed_dose3": 65
+    },
+    {
+      "province": "Kalimantan Barat",
+      "district": "Kabupaten Sambas",
+      "eligible_children": 837,
+      "dose1_children": 828,
+      "dose3_children": 775,
+      "coverage_pct": 92.59,
+      "dropout_pct": 6.4,
+      "missed_dose3": 62
+    }
+  ],
+  "priority_rule": "coverage < 80%; invented teaching threshold, not outbreak prediction",
+  "priority_districts": [
+    {
+      "province": "Jawa Tengah",
+      "district": "Kabupaten Semarang",
+      "eligible_children": 832,
+      "dose1_children": 0,
+      "dose3_children": 0,
+      "coverage_pct": 0.0,
+      "dropout_pct": null,
+      "missed_dose3": 832
+    },
+    {
+      "province": "DI Yogyakarta",
+      "district": "Kabupaten Sleman",
+      "eligible_children": 832,
+      "dose1_children": 81,
+      "dose3_children": 11,
+      "coverage_pct": 1.32,
+      "dropout_pct": 86.42,
+      "missed_dose3": 821
+    },
+    {
+      "province": "Kalimantan Barat",
+      "district": "Kabupaten Kubu Raya",
+      "eligible_children": 831,
+      "dose1_children": 94,
+      "dose3_children": 22,
+      "coverage_pct": 2.65,
+      "dropout_pct": 76.6,
+      "missed_dose3": 809
+    },
+    {
+      "province": "Sumatera Barat",
+      "district": "Kabupaten Agam",
+      "eligible_children": 832,
+      "dose1_children": 90,
+      "dose3_children": 27,
+      "coverage_pct": 3.25,
+      "dropout_pct": 70.0,
+      "missed_dose3": 805
+    },
+    {
+      "province": "Bali",
+      "district": "Kabupaten Gianyar",
+      "eligible_children": 838,
+      "dose1_children": 572,
+      "dose3_children": 256,
+      "coverage_pct": 30.55,
+      "dropout_pct": 55.24,
+      "missed_dose3": 582
+    },
+    {
+      "province": "Sumatera Selatan",
+      "district": "Kabupaten Ogan Komering Ilir",
+      "eligible_children": 838,
+      "dose1_children": 572,
+      "dose3_children": 259,
+      "coverage_pct": 30.91,
+      "dropout_pct": 54.72,
+      "missed_dose3": 579
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "district": "Kabupaten Maros",
+      "eligible_children": 837,
+      "dose1_children": 572,
+      "dose3_children": 261,
+      "coverage_pct": 31.18,
+      "dropout_pct": 54.37,
+      "missed_dose3": 576
+    },
+    {
+      "province": "Jawa Timur",
+      "district": "Kabupaten Jember",
+      "eligible_children": 838,
+      "dose1_children": 573,
+      "dose3_children": 273,
+      "coverage_pct": 32.58,
+      "dropout_pct": 52.36,
+      "missed_dose3": 565
+    },
+    {
+      "province": "Jawa Barat",
+      "district": "Kabupaten Bandung",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 419,
+      "coverage_pct": 50.36,
+      "dropout_pct": 43.91,
+      "missed_dose3": 413
+    },
+    {
+      "province": "Banten",
+      "district": "Kabupaten Tangerang",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 422,
+      "coverage_pct": 50.72,
+      "dropout_pct": 43.51,
+      "missed_dose3": 410
+    },
+    {
+      "province": "Sumatera Utara",
+      "district": "Kabupaten Deli Serdang",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 424,
+      "coverage_pct": 50.96,
+      "dropout_pct": 43.24,
+      "missed_dose3": 408
+    },
+    {
+      "province": "Lampung",
+      "district": "Kabupaten Lampung Selatan",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 427,
+      "coverage_pct": 51.32,
+      "dropout_pct": 42.84,
+      "missed_dose3": 405
+    },
+    {
+      "province": "Sumatera Selatan",
+      "district": "Kabupaten Banyuasin",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 503,
+      "coverage_pct": 60.46,
+      "dropout_pct": 23.09,
+      "missed_dose3": 329
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "district": "Kabupaten Gowa",
+      "eligible_children": 831,
+      "dose1_children": 653,
+      "dose3_children": 505,
+      "coverage_pct": 60.77,
+      "dropout_pct": 22.66,
+      "missed_dose3": 326
+    },
+    {
+      "province": "Jawa Timur",
+      "district": "Kabupaten Malang",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 517,
+      "coverage_pct": 62.14,
+      "dropout_pct": 20.95,
+      "missed_dose3": 315
+    },
+    {
+      "province": "Bali",
+      "district": "Kabupaten Badung",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 519,
+      "coverage_pct": 62.38,
+      "dropout_pct": 20.64,
+      "missed_dose3": 313
+    }
+  ],
+  "native_hive": "NOT RUN",
+  "analysis": {
+    "overall": {
+      "eligible_children": 20035,
+      "dose1_children": 14471,
+      "dose3_children": 10655,
+      "dropout_children": 3816,
+      "missed_dose3": 9380,
+      "never_started_dose1": 5564,
+      "coverage_pct": 53.18,
+      "dropout_pct": 26.37
+    },
+    "highest": [
+      {
+        "province": "DI Yogyakarta",
+        "district": "Kabupaten Sleman",
+        "eligible_children": 832,
+        "dose1_children": 81,
+        "dose3_children": 11,
+        "dropout_children": 70,
+        "missed_dose3": 821,
+        "never_started_dose1": 751,
+        "coverage_pct": 1.32,
+        "dropout_pct": 86.42
+      },
+      {
+        "province": "Kalimantan Barat",
+        "district": "Kabupaten Kubu Raya",
+        "eligible_children": 831,
+        "dose1_children": 94,
+        "dose3_children": 22,
+        "dropout_children": 72,
+        "missed_dose3": 809,
+        "never_started_dose1": 737,
+        "coverage_pct": 2.65,
+        "dropout_pct": 76.6
+      },
+      {
+        "province": "Sumatera Barat",
+        "district": "Kabupaten Agam",
+        "eligible_children": 832,
+        "dose1_children": 90,
+        "dose3_children": 27,
+        "dropout_children": 63,
+        "missed_dose3": 805,
+        "never_started_dose1": 742,
+        "coverage_pct": 3.25,
+        "dropout_pct": 70.0
+      },
+      {
+        "province": "Bali",
+        "district": "Kabupaten Gianyar",
+        "eligible_children": 838,
+        "dose1_children": 572,
+        "dose3_children": 256,
+        "dropout_children": 316,
+        "missed_dose3": 582,
+        "never_started_dose1": 266,
+        "coverage_pct": 30.55,
+        "dropout_pct": 55.24
+      },
+      {
+        "province": "Sumatera Selatan",
+        "district": "Kabupaten Ogan Komering Ilir",
+        "eligible_children": 838,
+        "dose1_children": 572,
+        "dose3_children": 259,
+        "dropout_children": 313,
+        "missed_dose3": 579,
+        "never_started_dose1": 266,
+        "coverage_pct": 30.91,
+        "dropout_pct": 54.72
+      }
+    ],
+    "lowest": [
+      {
+        "province": "Kalimantan Barat",
+        "district": "Kabupaten Sambas",
+        "eligible_children": 837,
+        "dose1_children": 828,
+        "dose3_children": 775,
+        "dropout_children": 53,
+        "missed_dose3": 62,
+        "never_started_dose1": 9,
+        "coverage_pct": 92.59,
+        "dropout_pct": 6.4
+      },
+      {
+        "province": "Sumatera Barat",
+        "district": "Kabupaten Tanah Datar",
+        "eligible_children": 838,
+        "dose1_children": 829,
+        "dose3_children": 773,
+        "dropout_children": 56,
+        "missed_dose3": 65,
+        "never_started_dose1": 9,
+        "coverage_pct": 92.24,
+        "dropout_pct": 6.76
+      },
+      {
+        "province": "DI Yogyakarta",
+        "district": "Kabupaten Bantul",
+        "eligible_children": 838,
+        "dose1_children": 829,
+        "dose3_children": 771,
+        "dropout_children": 58,
+        "missed_dose3": 67,
+        "never_started_dose1": 9,
+        "coverage_pct": 92.0,
+        "dropout_pct": 7.0
+      },
+      {
+        "province": "Jawa Tengah",
+        "district": "Kabupaten Banyumas",
+        "eligible_children": 838,
+        "dose1_children": 829,
+        "dose3_children": 768,
+        "dropout_children": 61,
+        "missed_dose3": 70,
+        "never_started_dose1": 9,
+        "coverage_pct": 91.65,
+        "dropout_pct": 7.36
+      },
+      {
+        "province": "Lampung",
+        "district": "Kabupaten Lampung Tengah",
+        "eligible_children": 837,
+        "dose1_children": 749,
+        "dose3_children": 684,
+        "dropout_children": 65,
+        "missed_dose3": 153,
+        "never_started_dose1": 88,
+        "coverage_pct": 81.72,
+        "dropout_pct": 8.68
+      }
+    ],
+    "province": [
+      {
+        "province": "Sumatera Selatan",
+        "eligible_children": 1670,
+        "dose1_children": 1226,
+        "dose3_children": 762,
+        "dropout_children": 464,
+        "missed_dose3": 908,
+        "never_started_dose1": 444,
+        "coverage_pct": 45.63,
+        "dropout_pct": 37.85
+      },
+      {
+        "province": "Sulawesi Selatan",
+        "eligible_children": 1668,
+        "dose1_children": 1225,
+        "dose3_children": 766,
+        "dropout_children": 459,
+        "missed_dose3": 902,
+        "never_started_dose1": 443,
+        "coverage_pct": 45.92,
+        "dropout_pct": 37.47
+      },
+      {
+        "province": "Bali",
+        "eligible_children": 1670,
+        "dose1_children": 1226,
+        "dose3_children": 775,
+        "dropout_children": 451,
+        "missed_dose3": 895,
+        "never_started_dose1": 444,
+        "coverage_pct": 46.41,
+        "dropout_pct": 36.79
+      },
+      {
+        "province": "Jawa Timur",
+        "eligible_children": 1670,
+        "dose1_children": 1227,
+        "dose3_children": 790,
+        "dropout_children": 437,
+        "missed_dose3": 880,
+        "never_started_dose1": 443,
+        "coverage_pct": 47.31,
+        "dropout_pct": 35.62
+      },
+      {
+        "province": "Jawa Barat",
+        "eligible_children": 1670,
+        "dose1_children": 1497,
+        "dose3_children": 1096,
+        "dropout_children": 401,
+        "missed_dose3": 574,
+        "never_started_dose1": 173,
+        "coverage_pct": 65.63,
+        "dropout_pct": 26.79
+      },
+      {
+        "province": "Banten",
+        "eligible_children": 1670,
+        "dose1_children": 1497,
+        "dose3_children": 1102,
+        "dropout_children": 395,
+        "missed_dose3": 568,
+        "never_started_dose1": 173,
+        "coverage_pct": 65.99,
+        "dropout_pct": 26.39
+      },
+      {
+        "province": "Sumatera Utara",
+        "eligible_children": 1670,
+        "dose1_children": 1497,
+        "dose3_children": 1106,
+        "dropout_children": 391,
+        "missed_dose3": 564,
+        "never_started_dose1": 173,
+        "coverage_pct": 66.23,
+        "dropout_pct": 26.12
+      },
+      {
+        "province": "Lampung",
+        "eligible_children": 1669,
+        "dose1_children": 1496,
+        "dose3_children": 1111,
+        "dropout_children": 385,
+        "missed_dose3": 558,
+        "never_started_dose1": 173,
+        "coverage_pct": 66.57,
+        "dropout_pct": 25.74
+      },
+      {
+        "province": "DI Yogyakarta",
+        "eligible_children": 1670,
+        "dose1_children": 910,
+        "dose3_children": 782,
+        "dropout_children": 128,
+        "missed_dose3": 888,
+        "never_started_dose1": 760,
+        "coverage_pct": 46.83,
+        "dropout_pct": 14.07
+      },
+      {
+        "province": "Kalimantan Barat",
+        "eligible_children": 1668,
+        "dose1_children": 922,
+        "dose3_children": 797,
+        "dropout_children": 125,
+        "missed_dose3": 871,
+        "never_started_dose1": 746,
+        "coverage_pct": 47.78,
+        "dropout_pct": 13.56
+      },
+      {
+        "province": "Sumatera Barat",
+        "eligible_children": 1670,
+        "dose1_children": 919,
+        "dose3_children": 800,
+        "dropout_children": 119,
+        "missed_dose3": 870,
+        "never_started_dose1": 751,
+        "coverage_pct": 47.9,
+        "dropout_pct": 12.95
+      },
+      {
+        "province": "Jawa Tengah",
+        "eligible_children": 1670,
+        "dose1_children": 829,
+        "dose3_children": 768,
+        "dropout_children": 61,
+        "missed_dose3": 902,
+        "never_started_dose1": 841,
+        "coverage_pct": 45.99,
+        "dropout_pct": 7.36
+      }
+    ]
+  },
+  "selected_analysis": "coverage",
+  "limit": 5,
+  "matches_mapreduce": true
+}

@@ -1,0 +1,356 @@
+{
+  "date": "2026-10-12",
+  "action": "Moved to Windows Recycle Bin",
+  "cleaned_files": 3753.0,
+  "removed_from_project_bytes": 854295630.0,
+  "protected_assets_verified": true,
+  "items": [
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\code\\__pycache__",
+      "directory": true,
+      "files": 12,
+      "bytes": 254079.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\native\\environment\\__pycache__",
+      "directory": true,
+      "files": 1,
+      "bytes": 21267.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\native\\environment\\local\\jammy-server-cloudimg-amd64.vmdk",
+      "directory": false,
+      "files": 1,
+      "bytes": 710537728.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\presentation\\filtered_indonesia.csv",
+      "directory": false,
+      "files": 1,
+      "bytes": 1567.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\presentation\\filtered_countries.csv",
+      "directory": false,
+      "files": 1,
+      "bytes": 7411.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\presentation\\coverage_dropout.csv",
+      "directory": false,
+      "files": 1,
+      "bytes": 1243.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\presentation\\dtp3_means.csv",
+      "directory": false,
+      "files": 1,
+      "bytes": 641.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\presentation\\grouped_years.csv",
+      "directory": false,
+      "files": 1,
+      "bytes": 69.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\presentation\\grouped_country_year.csv",
+      "directory": false,
+      "files": 1,
+      "bytes": 391.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\manual-demo\\verification.json",
+      "directory": false,
+      "files": 1,
+      "bytes": 1075.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\manual-demo\\verification.log",
+      "directory": false,
+      "files": 1,
+      "bytes": 6323.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\dashboard\\screenshots\\refined-hive.png",
+      "directory": false,
+      "files": 1,
+      "bytes": 46022.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\dashboard\\screenshots\\ppt-style.png",
+      "directory": false,
+      "files": 1,
+      "bytes": 42377.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\dashboard\\screenshots\\hive-filter.png",
+      "directory": false,
+      "files": 1,
+      "bytes": 59751.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\dashboard\\screenshots\\header-without-logo.png",
+      "directory": false,
+      "files": 1,
+      "bytes": 43726.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\dashboard\\annotation-verification.json",
+      "directory": false,
+      "files": 1,
+      "bytes": 932.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\output\\dashboard\\style_verification.json",
+      "directory": false,
+      "files": 1,
+      "bytes": 730.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\before-irregular-counts",
+      "directory": true,
+      "files": 2598,
+      "bytes": 85404044.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\before-unique-percentages",
+      "directory": true,
+      "files": 18,
+      "bytes": 16687046.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\dataset-30000-before-scale",
+      "directory": true,
+      "files": 1010,
+      "bytes": 32184437.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\pdf-style-reference",
+      "directory": true,
+      "files": 3,
+      "bytes": 268767.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\pdfs",
+      "directory": true,
+      "files": 5,
+      "bytes": 1035476.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\region-name-backup",
+      "directory": true,
+      "files": 15,
+      "bytes": 5435492.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\vm-tools",
+      "directory": true,
+      "files": 44,
+      "bytes": 2024044.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\audit_dataset_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 4235.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\dashboard-before-ppt-style.css",
+      "directory": false,
+      "files": 1,
+      "bytes": 8250.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\finalize_region_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 3902.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\manual_demo_impl.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 12688.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\pdf_dashboard.css",
+      "directory": false,
+      "files": 1,
+      "bytes": 8335.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\polish_demo_copy.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 8017.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\prepare_region_reference.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 1869.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\read_teaching_module.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 951.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\refresh_dataset_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 5965.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\region_name_mapping.json",
+      "directory": false,
+      "files": 1,
+      "bytes": 1462.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\render_module_pages.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 443.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\simplify_guides.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 25596.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\simplify_presentation.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 28838.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\sync_80000_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 3663.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\sync_irregular_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 4833.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\sync_unique_percentage_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 5071.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\update_demo_guides.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 7389.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\update_indonesia_region_names.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 11087.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\update_presentation_builder.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 16153.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\update_registry_docs.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 7476.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\update_registry_presentation.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 17220.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_80000_scale.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 4086.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_concept_release.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 5182.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_current_registry.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 3821.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_exploration.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 4878.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_manual_repeatability.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 3206.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_native_assets.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 2171.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_region_migration.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 4258.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_registry_artifacts.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 3153.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\verify_saved_html.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 1308.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\write_registry_guides.py",
+      "directory": false,
+      "files": 1,
+      "bytes": 11904.0
+    },
+    {
+      "path": "C:\\Kuliah\\Semester 5\\Big Data\\HadoopEcosystem\\tmp\\cleanup-project.ps1",
+      "directory": false,
+      "files": 1,
+      "bytes": 3582
+    }
+  ],
+  "validation": {
+    "registry_tests_passed": 10,
+    "concept_tests_passed": 6,
+    "dashboard_tests_passed": 6,
+    "local_links_checked": 23,
+    "missing_links": 0,
+    "dashboard_http_status": 200,
+    "css_http_status": 200,
+    "font_http_status": 200,
+    "javascript_syntax": "passed"
+  }
+}

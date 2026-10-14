@@ -1,0 +1,36 @@
+{
+  "synthetic": true,
+  "generator": "code/prepare_dummy_dataset.py; deterministic scenario v5; district-specific dose quotas",
+  "coverage_design": "Distinct rounded D3 coverage and numeric dropout per district in the default presentation dataset; deliberately synthetic, not an empirical property",
+  "geography": {
+    "real_region_names": true,
+    "reference": "source/regions/README.md",
+    "warning": "Synthetic immunization data; not actual coverage in these regions"
+  },
+  "parameters": {
+    "children": 80137,
+    "provinces": 12
+  },
+  "allocation": "Even allocation across district/birth-year groups; remainder distributed to first groups; deterministic offsets of at most 3 children per group with zero net change",
+  "children": 80137,
+  "vaccination_events": 112931,
+  "provinces": 12,
+  "districts": 24,
+  "birth_years": [
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "analysis_cohort": 2023,
+  "default_lookup_child": "D000030",
+  "snapshot_date": "2026-10-01",
+  "eligibility_rule": "Invented dose3_due flag for teaching; not a clinical schedule",
+  "dates": "Invented chronological dates; not a recommended vaccination schedule",
+  "quality": "IDs unique; flags and events consistent; dates ordered; unknown status absent by design",
+  "sha256": {
+    "children.csv": "88105b7a2948eb6f09113e7d3e452041432de9c646d152fe360f4d3832973f04",
+    "children.tsv": "6202b9d00f7e2797fd80db6f675a43e267314db36eba1cb8ecb63cd3b729985f",
+    "vaccination_events.csv": "c94b2c1e0faa5dd9904215842b8b01254c53ded3d068e56072796195bb56c59d"
+  }
+}

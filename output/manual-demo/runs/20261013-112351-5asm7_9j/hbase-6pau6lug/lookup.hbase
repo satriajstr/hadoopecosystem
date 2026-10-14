@@ -1,0 +1,13 @@
+# Example profile/history columns for a synthetic child row.
+# Run create once; for an existing table use put/get only.
+create 'modul4_registry_demo', 'profile', 'history'
+put "modul4_registry_demo", "D010000", "profile:province", "Jawa Tengah"
+put "modul4_registry_demo", "D010000", "profile:district", "Kabupaten Semarang"
+put "modul4_registry_demo", "D010000", "profile:birth_date", "2025-01-03"
+put "modul4_registry_demo", "D010000", "profile:birth_year", "2025"
+put "modul4_registry_demo", "D010000", "profile:dose3_due", "0"
+put "modul4_registry_demo", "D010000", "profile:dose1", "0"
+put "modul4_registry_demo", "D010000", "profile:dose2", "0"
+put "modul4_registry_demo", "D010000", "profile:dose3", "0"
+put "modul4_registry_demo", "D010000", "profile:last_updated", "2026-10-01"
+get "modul4_registry_demo", "D010000"

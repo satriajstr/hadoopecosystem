@@ -1,0 +1,6 @@
+area_code,area_name,source_revision,age_group,sum_of_year_percentages,year_count,mean_yearly_dtp3_pct
+IDN,Indonesia,"WHO/UNICEF estimates of national immunization coverage, 2025 revision",M12T23,478.0,6,79.67
+MYS,Malaysia,"WHO/UNICEF estimates of national immunization coverage, 2025 revision",M12T23,573.0,6,95.5
+PHL,Philippines,"WHO/UNICEF estimates of national immunization coverage, 2025 revision",M12T23,467.0,6,77.83
+THA,Thailand,"WHO/UNICEF estimates of national immunization coverage, 2025 revision",M12T23,557.0,6,92.83
+VNM,Viet Nam,"WHO/UNICEF estimates of national immunization coverage, 2025 revision",M12T23,527.0,6,87.83

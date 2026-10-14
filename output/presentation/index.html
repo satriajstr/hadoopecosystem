@@ -1,0 +1,480 @@
+<!doctype html><html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Modul 4 — Demo Registri Imunisasi Dummy</title><style>
+:root{--ink:#152c45;--muted:#51647a;--line:#d8e2ec;--blue:#1166a8;--bg:#f3f7fa}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.6 "Segoe UI",Arial,sans-serif}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5;padding:12px 4vw;display:flex;justify-content:space-between;align-items:center;gap:16px}header strong{font-size:18px}nav{display:flex;gap:6px;flex-wrap:wrap}nav a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:6px}nav a:hover,nav a.active{background:#e4f0fa;color:var(--blue)}main{max-width:1320px;margin:auto;padding:0 4vw}section{padding:42px 0 50px;scroll-margin-top:80px;border-bottom:1px solid var(--line)}h1{font-size:clamp(34px,4vw,54px);line-height:1.15;margin:15px 0}h2{font-size:clamp(28px,3vw,40px);line-height:1.25;margin:10px 0 16px}h3{font-size:20px;margin:0 0 12px}.eyebrow{color:var(--blue);font-weight:700;font-size:13px;letter-spacing:1.7px}.lead{font-size:21px;max-width:1000px;color:var(--muted)}.badge{display:inline-block;padding:4px 12px;border-radius:20px;font-size:13px;font-weight:700}.local{background:#ddf2e8;color:#176441}.design{background:#fff0d9;color:#825510}.split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:22px 0}.card{padding:22px;border:1px solid var(--line);border-radius:12px;background:#fff;min-width:0}.card p{font-size:16px}.card .split{gap:12px;margin:8px 0}.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 0}.metrics div{background:#fff;border-left:4px solid var(--blue);padding:20px;border-radius:4px}.metrics strong{display:block;font-size:36px;line-height:1.3}.metrics span{color:var(--muted);font-size:15px}.flow{display:flex;gap:10px;align-items:stretch;margin:24px 0}.flow div{flex:1;background:#e7f0f8;padding:14px;border-radius:6px;position:relative;font-size:16px;font-weight:600}.flow div+div::before{content:"→";position:absolute;left:-14px;top:14px;color:var(--blue);font-size:19px}.note{background:#fff8e9;border-left:4px solid #d2a344;padding:14px 18px;font-size:16px}.source{font-size:14px;color:var(--muted)}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;background:#fff;font-size:17px}th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}th{background:#e7f0f8;font-size:14px}pre{background:#13293d;color:#e5f0fa;padding:16px;border-radius:8px;overflow:auto;font:14px/1.6 Consolas,monospace;tab-size:4}details{margin:12px 0;border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:#fff}summary{cursor:pointer;color:var(--blue);font-size:15px;font-weight:600}a{color:var(--blue)}blockquote{font-size:22px;border-left:4px solid var(--blue);margin:25px 0;padding:10px 22px;background:#e7f0f8}.sources{font-size:15px}.sources li{margin:5px 0}footer{font-size:13px;color:var(--muted);padding:22px 4vw}ol{padding-left:22px;font-size:17px}button{border:1px solid var(--line);background:white;border-radius:6px;padding:7px 10px;color:var(--blue);cursor:pointer}.action{margin:26px 0;padding:20px 22px;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:8px}.action p{margin:10px 0;font-size:17px}.action pre{margin:14px 0}.next-step{padding:14px 18px;background:#e7f0f8;border-radius:6px;font-size:17px}blockquote{font-size:19px}section>p{max-width:1050px}@media(max-width:760px){header{position:static;display:block}.split,.metrics{grid-template-columns:1fr}.flow{flex-wrap:wrap}.flow div{min-width:40%}.flow div+div::before{content:""}section{padding:30px 0}}@media print{header,details{display:none}section{break-before:page;border:0;padding:15px 0}.card,table,.note{break-inside:avoid}body{font-size:14px}main{padding:0}.lead{font-size:17px}pre{white-space:pre-wrap}.metrics strong{font-size:26px}}
+</style></head><body><header><strong>Hadoop Ecosystem · Modul 4</strong><nav><a href="#intro">Mulai</a><a href="#storage">1. Simpan</a><a href="#case-mapreduce">2. Hitung</a><a href="#analytics">3. Analisis</a><a href="#etl">4. Pilih</a><a href="#lookup">5. Cari</a><a href="#real">WHO</a><a href="#close">Ringkasan</a></nav></header><main><section id="intro"><div class="eyebrow">MODUL 4 · HADOOP ECOSYSTEM</div><h1>Bagaimana data imunisasi diolah?</h1><p class="lead">Bayangkan catatan imunisasi dari beberapa provinsi dikumpulkan. Kita ingin tahu: kabupaten mana yang masih banyak anak belum menerima dosis ketiga, dan siapa saja anaknya?</p><p>Kita memakai data buatan agar prosesnya mudah diikuti. Setiap alat memiliki tugas berbeda: menyimpan, membagi pekerjaan, menghitung, menyaring, atau mencari catatan seorang anak.</p><p class="note"><strong>Data imunisasi sintetis untuk pembelajaran, menggunakan nama wilayah asli Indonesia.</strong> Angka pada halaman ini bukan kondisi imunisasi sebenarnya di daerah tersebut.</p><div class="metrics"><div><strong>80.137</strong><span>anak dalam data contoh</span></div><div><strong>12 / 24</strong><span>provinsi / kabupaten Indonesia</span></div><div><strong>112.931</strong><span>catatan pemberian dosis</span></div></div><h3>Kenali datanya dahulu</h3><div class="table-wrap"><table><thead><tr><th>Istilah yang akan muncul</th><th>Arti sederhana</th></tr></thead><tbody><tr><td>Profil anak</td><td>Satu baris berisi ID, wilayah, tahun lahir, dan status dosis seorang anak</td></tr><tr><td>Catatan dosis</td><td>Satu baris untuk satu pemberian dosis. Seorang anak bisa memiliki beberapa catatan</td></tr><tr><td>D1, D2, D3</td><td>Dosis pertama, kedua, dan ketiga vaksin DTP. Angka 1 = sudah menerima; 0 = belum menerima</td></tr><tr><td>Kelompok analisis</td><td>Anak kelahiran 2023 yang dalam data contoh sudah ditandai waktunya menerima D3</td></tr><tr><td>Kohort / eligible</td><td>Kohort = kelompok tahun lahir yang sama. Eligible = memenuhi syarat untuk dihitung</td></tr></tbody></table></div><p>Contoh: anak dengan D1=1, D2=1, D3=0 sudah menerima dosis pertama dan kedua, tetapi belum dosis ketiga. Dari 80.137 anak, ada 20.035 yang masuk kelompok analisis kita. Penanda waktunya menerima D3 (<code>dose3_due</code>) dibuat untuk latihan, bukan aturan jadwal klinis.</p><h3>Urutan yang akan kita lihat</h3><div class="table-wrap"><table><thead><tr><th>Tahap</th><th>Pertanyaan yang dijawab</th></tr></thead><tbody><tr><td>1. HDFS — menyimpan data</td><td>Bagaimana file dibagi dan tetap terbaca saat satu tempat penyimpanan gagal?</td></tr><tr><td>2. MapReduce + YARN — menghitung bersama</td><td>Bagaimana pekerjaan dibagi dan kapasitas komputer diatur?</td></tr><tr><td>3. Hive — membaca hasil dengan SQL</td><td>Berapa cakupan imunisasi dan putus lanjut dosis di tiap kabupaten?</td></tr><tr><td>4. Pig — memilih data</td><td>Anak mana yang masuk kelompok analisis dan belum menerima D3?</td></tr><tr><td>5. HBase — mencari satu anak</td><td>Bagaimana riwayat imunisasi anak yang dipilih dari daftar tadi?</td></tr></tbody></table></div><p>Urutan ini membantu kita bercerita. Analisis, penyaringan, dan pencarian memakai sumber data yang sama; hasil penyaringan memberi ID anak yang dapat dicari riwayatnya.</p><h3>Sebelum mengetik perintah</h3><ol><li>Buka <strong>PowerShell</strong>: tempat mengetik perintah untuk menjalankan demo.</li><li>Masuk ke folder proyek dengan perintah di bawah. Ini hanya memilih folder kerja.</li><li>Baca penjelasan tiap tahap, kemudian jalankan satu perintah pada bagian “Coba di terminal”.</li></ol><pre><code>Set-Location &#x27;C:\Kuliah\Semester 5\Big Data\HadoopEcosystem&#x27;</code></pre><p>Contoh bentuk perintah: <code>python code/demo.py storage</code>. <code>python</code> menjalankan program; <code>code/demo.py</code> adalah file demo; <code>storage</code> memilih tahap penyimpanan. Bagian terakhir berubah sesuai tahap.</p><p>Halaman ini berisi contoh hasil untuk dibaca. Hasil percobaan yang baru kamu jalankan muncul di terminal dan disimpan dalam folder yang disebutkan di akhir proses.</p><details><summary>Alat pendukung lain dalam modul</summary><p>Alat ini membantu data masuk dan mengatur urutan pekerjaan.</p><div class="table-wrap"><table><thead><tr><th>Alat</th><th>Arti perannya</th></tr></thead><tbody><tr><td>Sqoop</td><td>Memindahkan data dalam satu kumpulan dari database ke Hadoop atau sebaliknya</td></tr><tr><td>Flume</td><td>Mengumpulkan catatan kejadian/log, menampungnya, lalu mengirimkannya ke penyimpanan</td></tr><tr><td>Oozie</td><td>Menjalankan urutan pekerjaan: pekerjaan berikutnya menunggu pekerjaan sebelumnya berhasil</td></tr></tbody></table></div></details><p class="next-step"><strong>Setelah ini:</strong> mulai dari penyimpanan seluruh data pada tahap HDFS.</p></section><section id="storage"><div class="eyebrow">01 · HDFS</div><h2>Simpan data dan buat salinan cadangan</h2><span class="badge local">Contoh: catatan imunisasi anak</span><p class="lead">Sebelum menghitung, kita perlu menyimpan seluruh catatan. HDFS membagi file menjadi potongan yang disebut <strong>blok</strong>, lalu menyimpan salinannya di beberapa tempat.</p><p><strong>Tujuan demo:</strong> menunjukkan bahwa file tetap dapat dibaca ketika satu tempat penyimpanan gagal.</p><div class="table-wrap"><table><thead><tr><th>Nama teknis</th><th>Bayangkan sebagai</th><th>Tugasnya</th></tr></thead><tbody><tr><td>NameNode</td><td>Daftar lokasi penyimpanan</td><td>Mencatat blok mana berada di tempat mana</td></tr><tr><td>DataNode (DN1, DN2, DN3)</td><td>Tiga tempat penyimpanan</td><td>Menyimpan potongan file</td></tr><tr><td>Replika</td><td>Salinan blok</td><td>Menyediakan salinan yang dapat dibaca ketika tempat lain gagal</td></tr></tbody></table></div><p>Misalnya, satu blok disimpan di DN1 dan DN2. Saat DN1 gagal, kita membaca salinan di DN2. Kemudian salinan pengganti dibuat di DN3 agar blok kembali memiliki dua salinan.</p><div class="flow"><div>File dibagi menjadi blok</div><div>Tiap blok dibuat 2 salinan</div><div>DN1 dibuat gagal</div><div>Baca salinan dan pulihkan</div></div><div class="action"><h3>Coba di terminal</h3><p>Jalankan tahap penyimpanan untuk mencoba pembagian blok dan kegagalan DN1. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py storage</code></pre><p><strong>Perhatikan hasilnya:</strong> jumlah blok, pesan DN1 OFFLINE, dan apakah isi file tetap sama setelah dibaca kembali.</p></div><h3>Apa hasilnya?</h3><div class="table-wrap"><table><thead><tr><th>Hasil demo</th><th>Artinya</th></tr></thead><tbody><tr><td>962 blok</td><td>Empat file input dipecah menjadi total 962 potongan</td></tr><tr><td>2 replika per blok</td><td>Setiap potongan memiliki dua salinan</td></tr><tr><td>DN1 OFFLINE</td><td>Satu tempat penyimpanan sengaja dinonaktifkan dalam skenario latihan</td></tr><tr><td>Isi file tetap cocok</td><td>File dibaca dari DN2/DN3 dan pemeriksaan isi berhasil</td></tr><tr><td>641 blok dipulihkan</td><td>Blok yang kehilangan satu salinan mendapat salinan pengganti</td></tr></tbody></table></div><p>Pemeriksaan <strong>hash</strong> adalah pemeriksaan sidik jari isi file. Hash yang sama membantu memastikan isi file tidak berubah saat dipotong, disalin, dan digabung kembali.</p><blockquote><strong>Kalimat untuk presentasi:</strong> “HDFS menyimpan file dalam beberapa potongan dan membuat salinan. Ketika satu tempat penyimpanan gagal, salinan di tempat lain masih dapat dibaca.”</blockquote><details><summary>Lihat contoh isi data yang disimpan</summary><p>Profil berisi satu baris per anak. Riwayat berisi satu baris per pemberian dosis.</p><div class="table-wrap"><table><thead><tr><th>ID anak</th><th>Provinsi</th><th>Kabupaten</th><th>Tahun lahir</th><th>D1 / D2 / D3</th></tr></thead><tbody><tr><td>D000001</td><td>Jawa Barat</td><td>Kabupaten Bandung</td><td>2023</td><td>1 / 1 / 1</td></tr><tr><td>D000026</td><td>Jawa Barat</td><td>Kabupaten Bandung</td><td>2023</td><td>1 / 1 / 0</td></tr><tr><td>D000030</td><td>Jawa Barat</td><td>Kabupaten Bandung</td><td>2023</td><td>1 / 1 / 0</td></tr><tr><td>D000401</td><td>Jawa Barat</td><td>Kabupaten Bandung</td><td>2023</td><td>1 / 1 / 1</td></tr></tbody></table></div><div class="table-wrap"><table><thead><tr><th>ID anak</th><th>Dosis</th><th>Tanggal</th><th>Fasilitas</th></tr></thead><tbody><tr><td>D000001</td><td>DTP1</td><td>2023-06-01</td><td>FAC01</td></tr><tr><td>D000001</td><td>DTP2</td><td>2023-07-01</td><td>FAC01</td></tr><tr><td>D000001</td><td>DTP3</td><td>2023-08-01</td><td>FAC01</td></tr></tbody></table></div></details><details><summary>Detail teknis: lokasi blok dan kode</summary><p>Ukuran blok latihan 16 KiB agar sampel kecil menghasilkan beberapa blok. Client mengambil lokasi dari NameNode lalu membaca data langsung dari DataNode. Hash SHA-256 dicatat di manifest latihan untuk menelusuri integritas; pada HDFS pemeriksaan checksum melibatkan client/DataNode.</p><div class="table-wrap"><table><thead><tr><th>Blok children.tsv</th><th>Lokasi awal</th><th>Dibaca saat DN1 gagal</th><th>Lokasi setelah re-replikasi</th></tr></thead><tbody><tr><td>blk_00370</td><td>DN2, DN3</td><td>DN2</td><td>DN2, DN3</td></tr><tr><td>blk_00371</td><td>DN3, DN1</td><td>DN3</td><td>DN3, DN2</td></tr><tr><td>blk_00372</td><td>DN1, DN2</td><td>DN2</td><td>DN2, DN3</td></tr><tr><td>blk_00373</td><td>DN2, DN3</td><td>DN2</td><td>DN2, DN3</td></tr><tr><td>blk_00374</td><td>DN3, DN1</td><td>DN3</td><td>DN3, DN2</td></tr><tr><td>blk_00375</td><td>DN1, DN2</td><td>DN2</td><td>DN2, DN3</td></tr></tbody></table></div><p>Tabel menampilkan enam blok pertama; catatan hasil menyimpan seluruh blok.</p><p>Blok adalah potongan byte, sehingga satu baris teks bisa melintasi dua blok. Penggabungan kembali mempertahankan file utuh. Jejak hasil ada pada <code>hdfs/results.json</code> dalam folder sesi.</p><details><summary>Kode pembagian blok dan pemulihan</summary><pre><code>&quot;&quot;&quot;Small byte-block model: metadata, replicas, checksums, and node recovery.&quot;&quot;&quot;
+import copy
+import hashlib
+from pathlib import Path
+from prepare_dummy_dataset import save_json
+
+BLOCK_SIZE = 16 * 1024  # Teaching size so this small registry has several blocks.
+NODES = (&#x27;DN1&#x27;, &#x27;DN2&#x27;, &#x27;DN3&#x27;)
+
+
+def checksum(data):
+    return hashlib.sha256(data).hexdigest()
+
+
+def write_blocks(source, names, root, block_size=BLOCK_SIZE, replication=2):
+    if block_size &lt;= 0 or not 1 &lt;= replication &lt;= len(NODES):
+        raise ValueError(&#x27;Invalid block size or replication factor&#x27;)
+    root = Path(root)
+    root.mkdir(parents=True, exist_ok=True)
+    manifest = {&#x27;block_size_bytes&#x27;: block_size, &#x27;replication&#x27;: replication,
+                &#x27;nodes&#x27;: {node: &#x27;ONLINE&#x27; for node in NODES}, &#x27;files&#x27;: {}}
+    ordinal = 0
+    for name in names:
+        data = (Path(source)/name).read_bytes()
+        blocks = []
+        for offset in range(0, len(data), block_size):
+            part = data[offset:offset+block_size]
+            block_id = f&#x27;blk_{ordinal:05d}&#x27;
+            replicas = [NODES[(ordinal+i) % len(NODES)] for i in range(replication)]
+            for node in replicas:
+                folder = root/&#x27;datanodes&#x27;/node
+                folder.mkdir(parents=True, exist_ok=True)
+                (folder/block_id).write_bytes(part)
+            blocks.append({&#x27;id&#x27;: block_id, &#x27;bytes&#x27;: len(part),
+                           &#x27;sha256&#x27;: checksum(part), &#x27;replicas&#x27;: replicas})
+            ordinal += 1
+        manifest[&#x27;files&#x27;][name] = {&#x27;bytes&#x27;: len(data), &#x27;sha256&#x27;: checksum(data), &#x27;blocks&#x27;: blocks}
+    save_json(root/&#x27;namenode.json&#x27;, manifest)
+    return manifest
+
+
+def read_block(root, manifest, block):
+    for node in block[&#x27;replicas&#x27;]:
+        path = Path(root)/&#x27;datanodes&#x27;/node/block[&#x27;id&#x27;]
+        if manifest[&#x27;nodes&#x27;][node] != &#x27;ONLINE&#x27; or not path.is_file():
+            continue
+        data = path.read_bytes()
+        if len(data) == block[&#x27;bytes&#x27;] and checksum(data) == block[&#x27;sha256&#x27;]:
+            return data, node
+    raise ValueError(&#x27;No healthy replica for &#x27;+block[&#x27;id&#x27;])
+
+
+def read_file(root, manifest, name):
+    # The client gets locations from metadata, then reads bytes from DataNodes.
+    chunks, trace = [], []
+    for block in manifest[&#x27;files&#x27;][name][&#x27;blocks&#x27;]:
+        data, node = read_block(root, manifest, block)
+        chunks.append(data)
+        trace.append({&#x27;block&#x27;: block[&#x27;id&#x27;], &#x27;node&#x27;: node})
+    result = b&#x27;&#x27;.join(chunks)
+    expected = manifest[&#x27;files&#x27;][name]
+    if len(result) != expected[&#x27;bytes&#x27;] or checksum(result) != expected[&#x27;sha256&#x27;]:
+        raise ValueError(&#x27;Reconstructed file differs from metadata: &#x27;+name)
+    return result, trace
+
+
+def repair_replicas(root, manifest):
+    repairs = []
+    for info in manifest[&#x27;files&#x27;].values():
+        for block in info[&#x27;blocks&#x27;]:
+            data, source = read_block(root, manifest, block)
+            healthy = []
+            for node in block[&#x27;replicas&#x27;]:
+                path = Path(root)/&#x27;datanodes&#x27;/node/block[&#x27;id&#x27;]
+                if manifest[&#x27;nodes&#x27;][node] == &#x27;ONLINE&#x27; and path.is_file() and checksum(path.read_bytes()) == block[&#x27;sha256&#x27;]:
+                    healthy.append(node)
+            for target in NODES:
+                if len(healthy) &gt;= manifest[&#x27;replication&#x27;]:
+                    break
+                if target in healthy or manifest[&#x27;nodes&#x27;][target] != &#x27;ONLINE&#x27;:
+                    continue
+                folder = Path(root)/&#x27;datanodes&#x27;/target
+                folder.mkdir(parents=True, exist_ok=True)
+                (folder/block[&#x27;id&#x27;]).write_bytes(data)
+                healthy.append(target)
+                repairs.append({&#x27;block&#x27;: block[&#x27;id&#x27;], &#x27;source&#x27;: source, &#x27;target&#x27;: target})
+            block[&#x27;replicas&#x27;] = healthy
+    save_json(Path(root)/&#x27;namenode.json&#x27;, manifest)
+    return repairs
+
+
+def demonstrate_storage(source, names, root, destination):
+    root, destination = Path(root), Path(destination)
+    destination.mkdir(parents=True, exist_ok=True)
+    manifest = write_blocks(source, names, root)
+    initial = copy.deepcopy(manifest)
+    before = {}
+    for name in names:
+        data, before[name] = read_file(root, manifest, name)
+        (destination/name).write_bytes(data)
+    # A failed heartbeat excludes DN1; its old files are not usable replicas.
+    manifest[&#x27;nodes&#x27;][&#x27;DN1&#x27;] = &#x27;OFFLINE&#x27;
+    after = {}
+    for name in names:
+        data, after[name] = read_file(root, manifest, name)
+        if data != (destination/name).read_bytes():
+            raise ValueError(&#x27;Read after node failure differs from the initial read&#x27;)
+    repairs = repair_replicas(root, manifest)
+    for name in names:
+        read_file(root, manifest, name)
+    evidence = {&#x27;initial&#x27;: initial, &#x27;after_failure&#x27;: copy.deepcopy(manifest),
+                &#x27;read_before_failure&#x27;: before, &#x27;read_after_failure&#x27;: after,
+                &#x27;failed_node&#x27;: &#x27;DN1&#x27;, &#x27;repairs&#x27;: repairs,
+                &#x27;all_files_match_after_failure&#x27;: True,
+                &#x27;replication_restored&#x27;: all(len(b[&#x27;replicas&#x27;]) == manifest[&#x27;replication&#x27;]
+                    for f in manifest[&#x27;files&#x27;].values() for b in f[&#x27;blocks&#x27;])}
+    save_json(root/&#x27;results.json&#x27;, evidence)
+    return evidence
+
+
+def verify_storage(root, destination):
+    import json
+    root = Path(root)
+    manifest = json.loads((root/&#x27;namenode.json&#x27;).read_text(encoding=&#x27;utf-8&#x27;))
+    for name in manifest[&#x27;files&#x27;]:
+        data, _ = read_file(root, manifest, name)
+        if data != (Path(destination)/name).read_bytes():
+            raise ValueError(&#x27;Storage snapshot differs from block replicas: &#x27;+name)
+
+
+def print_storage(evidence,detail=False):
+    initial = evidence[&#x27;initial&#x27;]
+    if not detail:
+        blocks = sum(len(info[&#x27;blocks&#x27;]) for info in initial[&#x27;files&#x27;].values())
+        print(&#x27;Blok:&#x27;,blocks,&#x27;| ukuran:&#x27;,initial[&#x27;block_size_bytes&#x27;]//1024,&#x27;KiB | replika:&#x27;,initial[&#x27;replication&#x27;])
+        print(&#x27;DN1 OFFLINE | file terbaca dari DN2/DN3 | hash cocok&#x27;)
+        print(&#x27;Replika pengganti:&#x27;,len(evidence[&#x27;repairs&#x27;]),&#x27;blok | pulih:&#x27;,
+              &#x27;ya&#x27; if evidence[&#x27;replication_restored&#x27;] else &#x27;belum&#x27;)
+        return
+    print(&#x27;Blok = potongan file. Replika = salinan potongan itu.&#x27;)
+    print(&#x27;NameNode mencatat lokasi; DN1, DN2, DN3 adalah tempat penyimpanan (DataNode).&#x27;)
+    print(&#x27;Ukuran potongan:&#x27;, initial[&#x27;block_size_bytes&#x27;]//1024, &#x27;KiB | salinan per potongan:&#x27;, initial[&#x27;replication&#x27;])
+    for name, info in initial[&#x27;files&#x27;].items():
+        print(name, &#x27;-&gt;&#x27;, len(info[&#x27;blocks&#x27;]), &#x27;blok |&#x27;, info[&#x27;bytes&#x27;], &#x27;byte&#x27;)
+    for block in initial[&#x27;files&#x27;][&#x27;children.tsv&#x27;][&#x27;blocks&#x27;][:3]:
+        print(&#x27; &#x27;, block[&#x27;id&#x27;], &#x27;-&gt;&#x27;, &#x27;, &#x27;.join(block[&#x27;replicas&#x27;]))
+    print(&#x27;DN1 OFFLINE = satu tempat penyimpanan dibuat gagal dalam latihan.&#x27;)
+    print(&#x27;File tetap terbaca dari salinan di DN2/DN3. Pemeriksaan isi (hash): cocok.&#x27;)
+    print(&#x27;Salinan pengganti dibuat untuk&#x27;, len(evidence[&#x27;repairs&#x27;]), &#x27;blok.&#x27;)
+    print(&#x27;Setiap blok kembali memiliki dua salinan:&#x27;, &#x27;ya&#x27; if evidence[&#x27;replication_restored&#x27;] else &#x27;belum&#x27;)</code></pre></details><p>Contoh perintah HDFS untuk menyimpan file dan melihat daftarnya:</p><pre><code>hdfs dfs -put data/dummy/children.tsv &quot;$HDFS_BASE/children/children.tsv&quot;
+hdfs dfs -ls -R &quot;$HDFS_BASE&quot;</code></pre></details><p class="next-step"><strong>Setelah ini:</strong> data sudah disimpan. Kita akan membagi pekerjaan untuk menghitung jumlah anak per kabupaten.</p></section><section id="case-mapreduce"><div class="eyebrow">02 · MAPREDUCE + YARN</div><h2>Bagi pekerjaan, lalu gabungkan hitungannya</h2><span class="badge local">Contoh: catatan imunisasi anak</span><p class="lead">Data dari tahap sebelumnya berisi 80.137 anak. Sekarang kita menghitung anak yang masuk kelompok analisis, penerima D1, dan penerima D3 untuk setiap kabupaten.</p><p><strong>MapReduce</strong> membagi dan merangkum pekerjaan. <strong>YARN</strong> mengatur kapasitas CPU/RAM agar pekerjaan mendapat tempat untuk berjalan.</p><div class="table-wrap"><table><thead><tr><th>Tahap MapReduce</th><th>Apa yang dilakukan pada data kita</th></tr></thead><tbody><tr><td>Map — baca dan catat</td><td>Mapper A/B membaca 40.069/40.068 profil dan memilih 10.015/10.020 anak yang memenuhi syarat</td></tr><tr><td>Shuffle/sort — kelompokkan</td><td>Catatan dari kedua mapper dikumpulkan berdasarkan provinsi dan kabupaten yang sama</td></tr><tr><td>Reduce — jumlahkan</td><td>Jumlah anak, penerima D1, dan penerima D3 dihitung untuk 24 kabupaten</td></tr></tbody></table></div><div class="flow"><div>80.137 profil dibagi dua</div><div>20.035 anak memenuhi syarat</div><div>Kelompokkan per kabupaten</div><div>24 hasil hitungan</div></div><h3>Lalu YARN melakukan apa?</h3><p>Bayangkan ada beberapa komputer yang bisa mengerjakan tugas. YARN memeriksa kapasitasnya dan memberi jatah CPU/RAM untuk tiap tugas. Jatah tersebut disebut <strong>container</strong>.</p><div class="table-wrap"><table><thead><tr><th>Nama dalam YARN</th><th>Arti sederhana</th></tr></thead><tbody><tr><td>ResourceManager</td><td>Pengatur kapasitas seluruh komputer: memilih di mana tugas mendapat jatah CPU/RAM</td></tr><tr><td>ApplicationMaster</td><td>Koordinator satu pekerjaan: meminta jatah dan memantau tugasnya</td></tr><tr><td>NodeManager (NM1, NM2, NM3)</td><td>Pengelola pada tiap komputer: menjalankan tugas sesuai jatah yang diberikan</td></tr></tbody></table></div><p>Pada contoh ini, NM1 menampung koordinator. NM2 menjalankan Mapper A dan NM3 menjalankan Mapper B. Setelah hasil kedua mapper terkumpul, reducer menghitung totalnya. Jatah dilepas setelah tugas selesai.</p><div class="flow"><div>Pekerjaan dikirim</div><div>Kapasitas disediakan</div><div>Tugas berjalan</div><div>Selesai, kapasitas dilepas</div></div><div class="action"><h3>Coba di terminal</h3><p>Setelah storage selesai, jalankan tahap ini untuk melihat pembagian pekerjaan dan hitungannya. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py mapreduce</code></pre><p><strong>Perhatikan hasilnya:</strong> Mapper A/B mendapat tempat, lalu muncul tabel 24 kabupaten. Urutan selesainya mapper boleh berbeda.</p></div><h3>Contoh membaca hasil: Kabupaten Bandung</h3><div class="table-wrap"><table><thead><tr><th>Angka hasil</th><th>Artinya</th></tr></thead><tbody><tr><td>832 anak</td><td>Jumlah anak Kabupaten Bandung yang memenuhi syarat dalam kelompok analisis</td></tr><tr><td>747 penerima D1</td><td>Anak dalam kelompok tadi yang sudah menerima dosis pertama</td></tr><tr><td>419 penerima D3</td><td>Anak dalam kelompok tadi yang sudah menerima dosis ketiga</td></tr></tbody></table></div><p>Tahap ini menampilkan jumlah anak dan penerima dosis. Pada tahap Hive, kita menggunakan SQL untuk melihat persentase cakupan, putus lanjut, dan kabupaten prioritas.</p><blockquote><strong>Kalimat untuk presentasi:</strong> “MapReduce membagi data ke dua pembaca, mengelompokkan catatan dari wilayah yang sama, lalu menjumlahkannya. YARN menyediakan kapasitas agar tugas-tugas itu bisa berjalan.”</blockquote><details><summary>Coba tambahan: apa yang terjadi saat kapasitas terbatas?</summary><p>Perintah berikut mengubah contoh menjadi dua NodeManager. Satu digunakan koordinator, sehingga tinggal satu tempat untuk mapper. Mapper B harus menunggu Mapper A selesai. Angka hasil tetap sama.</p><div class="action"><h3>Coba di terminal</h3><p>Jalankan ini bila ingin memperlihatkan antrean. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py mapreduce --yarn-nodes 2</code></pre><p><strong>Perhatikan hasilnya:</strong> pesan WAITING berarti menunggu jatah kosong. Opsi --yarn-nodes 2 memilih dua NodeManager.</p></div></details><details><summary>Detail teknis: status, jatah CPU/RAM, dan kode</summary><div class="table-wrap"><table><thead><tr><th>Status di catatan proses</th><th>Artinya</th></tr></thead><tbody><tr><td>SUBMITTED</td><td>Pekerjaan sudah dikirim</td></tr><tr><td>ACCEPTED</td><td>Pekerjaan diterima</td></tr><tr><td>RUNNING</td><td>Pekerjaan sedang berjalan</td></tr><tr><td>WAITING</td><td>Tugas menunggu kapasitas</td></tr><tr><td>FINISHED / SUCCEEDED</td><td>Pekerjaan selesai dengan berhasil</td></tr></tbody></table></div><p>Anggaran latihan per NodeManager: 1 CPU/1.024 MiB. ApplicationMaster memakai 1 CPU/256 MiB; mapper/reducer memakai 1 CPU/512 MiB. Ini jatah dalam model latihan, bukan pengukuran RAM laptop. Satu MiB adalah satuan ukuran memori.</p><div class="table-wrap"><table><thead><tr><th>Container</th><th>Tugas</th><th>NodeManager</th><th>CPU</th><th>RAM MiB</th></tr></thead><tbody><tr><td>container_001</td><td>ApplicationMaster</td><td>NM1</td><td>1</td><td>256</td></tr><tr><td>container_002</td><td>Mapper A</td><td>NM2</td><td>1</td><td>512</td></tr><tr><td>container_003</td><td>Mapper B</td><td>NM3</td><td>1</td><td>512</td></tr><tr><td>container_004</td><td>Reducer</td><td>NM2</td><td>1</td><td>512</td></tr></tbody></table></div><p>Key adalah penanda kelompok, misalnya <code>Jawa Barat|Kabupaten Bandung</code>. Value adalah angka yang dikirim mapper: satu anak, status D1, dan status D3. Input split adalah bagian data yang dibaca mapper; berbeda dari blok penyimpanan HDFS. Pada contoh ini mapper menerima baris profil utuh.</p><details><summary>Urutan lengkap proses yang dijalankan</summary><pre><code>01. ResourceManager SUBMITTED | demo_app_2a91fd67bb
+02. ResourceManager ACCEPTED | ApplicationMaster requested
+03. ResourceManager ALLOCATED | container_001: ApplicationMaster @ NM1; CPU=1, RAM=256 MiB
+04. NM1 LAUNCHED | container_001: ApplicationMaster
+05. ApplicationMaster RUNNING | demo_app_2a91fd67bb
+06. ApplicationMaster REQUESTED | Mapper A; CPU=1, RAM=512 MiB
+07. ApplicationMaster REQUESTED | Mapper B; CPU=1, RAM=512 MiB
+08. ResourceManager ALLOCATED | container_002: Mapper A @ NM2; CPU=1, RAM=512 MiB
+09. NM2 LAUNCHED | container_002: Mapper A
+10. ResourceManager ALLOCATED | container_003: Mapper B @ NM3; CPU=1, RAM=512 MiB
+11. NM3 LAUNCHED | container_003: Mapper B
+12. NM2 COMPLETED | container_002: Mapper A; resource released
+13. NM3 COMPLETED | container_003: Mapper B; resource released
+14. MapReduce SHUFFLE_SORT | Group records by province|district after both maps complete
+15. ApplicationMaster REQUESTED | Reducer; CPU=1, RAM=512 MiB
+16. ResourceManager ALLOCATED | container_004: Reducer @ NM2; CPU=1, RAM=512 MiB
+17. NM2 LAUNCHED | container_004: Reducer
+18. NM2 COMPLETED | container_004: Reducer; resource released
+19. NM1 COMPLETED | container_001: ApplicationMaster; resource released
+20. ResourceManager FINISHED | SUCCEEDED</code></pre></details><details><summary>Kode mapper: baca profil dan keluarkan angka</summary><pre><code>&quot;&quot;&quot;Dummy child TSV -&gt; district key and eligible/D1/D3 counts.&quot;&quot;&quot;
+import sys
+
+
+def main():
+    for line in sys.stdin:
+        if not line.strip():
+            continue
+        fields = line.rstrip(&#x27;\r\n&#x27;).split(&#x27;\t&#x27;)
+        if len(fields)!=10:
+            raise ValueError(&#x27;Registry TSV requires ten columns&#x27;)
+        _,province,district,_,year,due,d1,d2,d3,_ = fields
+        year,due,d1,d2,d3 = map(int,(year,due,d1,d2,d3))
+        if any(value not in (0,1) for value in (due,d1,d2,d3)) or not d3&lt;=d2&lt;=d1:
+            raise ValueError(&#x27;Invalid eligibility/dose sequence&#x27;)
+        if year==2023 and due==1:
+            print(f&#x27;{province}|{district}\t1\t{d1}\t{d3}&#x27;)
+
+
+if __name__==&#x27;__main__&#x27;:
+    main()</code></pre></details><details><summary>Kode reducer: jumlahkan per wilayah</summary><pre><code>&quot;&quot;&quot;Sorted district key, eligible/D1/D3 counts -&gt; coverage and dropout.&quot;&quot;&quot;
+import sys
+from decimal import Decimal, ROUND_HALF_UP
+
+
+def percentage(numerator,denominator):
+    return str((Decimal(100)*numerator/denominator).quantize(Decimal(&#x27;0.01&#x27;),rounding=ROUND_HALF_UP)) if denominator else &#x27;\\N&#x27;
+
+
+def emit(key,eligible,d1,d3):
+    print(f&#x27;{key}\t{eligible}\t{d1}\t{d3}\t{percentage(d3,eligible)}\t{percentage(d1-d3,d1)}&#x27;)
+
+
+def main():
+    current = None
+    eligible = d1 = d3 = 0
+    for line in sys.stdin:
+        if not line.strip():
+            continue
+        key,n,a,b = line.rstrip(&#x27;\r\n&#x27;).split(&#x27;\t&#x27;)
+        n,a,b = map(int,(n,a,b))
+        if n&lt;=0 or not 0&lt;=b&lt;=a&lt;=n:
+            raise ValueError(&#x27;Invalid partial district counts&#x27;)
+        if current is not None and key&lt;current:
+            raise ValueError(&#x27;Reducer input must be sorted by key&#x27;)
+        if current is not None and key!=current:
+            emit(current,eligible,d1,d3)
+            eligible = d1 = d3 = 0
+        current = key
+        eligible += n
+        d1 += a
+        d3 += b
+    if current is not None:
+        emit(current,eligible,d1,d3)
+
+
+if __name__==&#x27;__main__&#x27;:
+    main()</code></pre></details><details><summary>Kode alokasi kapasitas YARN</summary><pre><code>&quot;&quot;&quot;Resource-budget model tied to actual Python task execution.&quot;&quot;&quot;
+from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+from datetime import datetime, timezone
+from time import perf_counter
+from uuid import uuid4
+
+
+class YarnApplication:
+    def __init__(self, node_count=3, cpu=1, memory_mb=1024):
+        if node_count &lt; 2 or cpu &lt; 1 or memory_mb &lt; 512:
+            raise ValueError(&#x27;The application needs an AM and task resources&#x27;)
+        self.nodes = {f&#x27;NM{i+1}&#x27;: {&#x27;cpu&#x27;: cpu, &#x27;memory_mb&#x27;: memory_mb,
+                      &#x27;used_cpu&#x27;: 0, &#x27;used_memory_mb&#x27;: 0} for i in range(node_count)}
+        self.application_id = &#x27;demo_app_&#x27;+uuid4().hex[:10]
+        self.events, self.containers = [], {}
+        self.state = &#x27;NEW&#x27;
+        self.started = perf_counter()
+        self.record(&#x27;ResourceManager&#x27;, &#x27;SUBMITTED&#x27;, self.application_id)
+        self.state = &#x27;SUBMITTED&#x27;
+        self.record(&#x27;ResourceManager&#x27;, &#x27;ACCEPTED&#x27;, &#x27;ApplicationMaster requested&#x27;)
+        self.state = &#x27;ACCEPTED&#x27;
+        self.am = self.allocate(&#x27;ApplicationMaster&#x27;, 1, 256)
+        if self.am is None:
+            raise ValueError(&#x27;Insufficient resources for ApplicationMaster&#x27;)
+        self.state = &#x27;RUNNING&#x27;
+        self.record(&#x27;ApplicationMaster&#x27;, &#x27;RUNNING&#x27;, self.application_id)
+
+    def record(self, actor, event, detail):
+        self.events.append({&#x27;sequence&#x27;: len(self.events)+1, &#x27;actor&#x27;: actor,
+            &#x27;event&#x27;: event, &#x27;detail&#x27;: detail, &#x27;elapsed_ms&#x27;: round((perf_counter()-self.started)*1000, 3),
+            &#x27;utc&#x27;: datetime.now(timezone.utc).isoformat(),
+            &#x27;resources&#x27;: {node: dict(value) for node, value in self.nodes.items()}})
+
+    def allocate(self, task, cpu=1, memory_mb=512):
+        for node, resources in self.nodes.items():
+            if resources[&#x27;used_cpu&#x27;]+cpu &gt; resources[&#x27;cpu&#x27;] or resources[&#x27;used_memory_mb&#x27;]+memory_mb &gt; resources[&#x27;memory_mb&#x27;]:
+                continue
+            resources[&#x27;used_cpu&#x27;] += cpu
+            resources[&#x27;used_memory_mb&#x27;] += memory_mb
+            container = &#x27;container_&#x27;+str(len(self.containers)+1).zfill(3)
+            self.containers[container] = {&#x27;task&#x27;: task, &#x27;node&#x27;: node, &#x27;cpu&#x27;: cpu,
+                                          &#x27;memory_mb&#x27;: memory_mb, &#x27;active&#x27;: True}
+            self.record(&#x27;ResourceManager&#x27;, &#x27;ALLOCATED&#x27;, f&#x27;{container}: {task} @ {node}; CPU={cpu}, RAM={memory_mb} MiB&#x27;)
+            self.record(node, &#x27;LAUNCHED&#x27;, f&#x27;{container}: {task}&#x27;)
+            return container
+        return None
+
+    def release(self, container, status=&#x27;COMPLETED&#x27;):
+        info = self.containers[container]
+        if not info[&#x27;active&#x27;]:
+            return
+        resources = self.nodes[info[&#x27;node&#x27;]]
+        resources[&#x27;used_cpu&#x27;] -= info[&#x27;cpu&#x27;]
+        resources[&#x27;used_memory_mb&#x27;] -= info[&#x27;memory_mb&#x27;]
+        info[&#x27;active&#x27;] = False
+        self.record(info[&#x27;node&#x27;], status, f&#x27;{container}: {info[&quot;task&quot;]}; resource released&#x27;)
+
+    def run_tasks(self, tasks):
+        if self.state != &#x27;RUNNING&#x27;:
+            raise ValueError(&#x27;Application is not running&#x27;)
+        # tasks is [(label, callable)]. Only allocated tasks may be submitted.
+        pending = list(enumerate(tasks))
+        results, active = {}, {}
+        for _, (label, _) in pending:
+            self.record(&#x27;ApplicationMaster&#x27;, &#x27;REQUESTED&#x27;, label+&#x27;; CPU=1, RAM=512 MiB&#x27;)
+        try:
+            with ThreadPoolExecutor(max_workers=len(self.nodes)) as pool:
+                while pending or active:
+                    while pending:
+                        index, (label, function) = pending[0]
+                        container = self.allocate(label)
+                        if container is None:
+                            self.record(&#x27;ResourceManager&#x27;, &#x27;WAITING&#x27;, label+&#x27;; waiting for free CPU/RAM&#x27;)
+                            break
+                        pending.pop(0)
+                        active[pool.submit(function)] = (index, container)
+                    if not active:
+                        raise ValueError(&#x27;No available node can satisfy the task request&#x27;)
+                    done, _ = wait(active, return_when=FIRST_COMPLETED)
+                    for future in done:
+                        index, container = active.pop(future)
+                        try:
+                            results[index] = future.result()
+                        except Exception:
+                            self.release(container, &#x27;FAILED&#x27;)
+                            raise
+                        self.release(container)
+        except Exception:
+            self.finish(False)
+            raise
+        return [results[index] for index in range(len(tasks))]
+
+    def finish(self, success=True):
+        if self.state in (&#x27;FINISHED&#x27;, &#x27;FAILED&#x27;):
+            return
+        for container in self.containers:
+            self.release(container, &#x27;COMPLETED&#x27; if success else &#x27;STOPPED&#x27;)
+        self.state = &#x27;FINISHED&#x27; if success else &#x27;FAILED&#x27;
+        self.record(&#x27;ResourceManager&#x27;, self.state, &#x27;SUCCEEDED&#x27; if success else &#x27;FAILED&#x27;)
+
+    def evidence(self):
+        return {&#x27;application_id&#x27;: self.application_id, &#x27;state&#x27;: self.state,
+                &#x27;final_status&#x27;: &#x27;SUCCEEDED&#x27; if self.state == &#x27;FINISHED&#x27; else self.state,
+                &#x27;resource_units&#x27;: &#x27;logical CPU and MiB for the teaching scheduler&#x27;,
+                &#x27;nodes&#x27;: self.nodes, &#x27;containers&#x27;: self.containers, &#x27;events&#x27;: self.events}
+
+
+def print_yarn(evidence,detail=False):
+    if not detail:
+        print(&#x27;YARN:&#x27;,evidence[&#x27;final_status&#x27;])
+        print(&#x27;Tugas:&#x27;,&#x27;, &#x27;.join(container[&#x27;task&#x27;]+&#x27; -&gt; &#x27;+container[&#x27;node&#x27;]
+              for container in evidence[&#x27;containers&#x27;].values() if container[&#x27;task&#x27;]!=&#x27;ApplicationMaster&#x27;))
+        if any(event[&#x27;event&#x27;]==&#x27;WAITING&#x27; for event in evidence[&#x27;events&#x27;]):
+            print(&#x27;WAITING: Mapper B menunggu Mapper A selesai.&#x27;)
+        free = all(node[&#x27;used_cpu&#x27;]==0 and node[&#x27;used_memory_mb&#x27;]==0 for node in evidence[&#x27;nodes&#x27;].values())
+        print(&#x27;Resource dilepas:&#x27;, &#x27;ya&#x27; if free else &#x27;belum&#x27;)
+        return
+    print(&#x27;YARN mengatur jatah CPU/RAM agar setiap tugas mendapat tempat untuk berjalan.&#x27;)
+    print(&#x27;1. Pekerjaan dikirim dan diterima. ID:&#x27;, evidence[&#x27;application_id&#x27;])
+    print(&#x27;2. Koordinator (ApplicationMaster) mendapat tempat di NM1.&#x27;)
+    print(&#x27;3. Pengatur kapasitas (ResourceManager) memberi jatah; NodeManager menjalankan tugas:&#x27;)
+    for container in evidence[&#x27;containers&#x27;].values():
+        if container[&#x27;task&#x27;] != &#x27;ApplicationMaster&#x27;:
+            print(&#x27;  &#x27;,container[&#x27;task&#x27;],&#x27;-&gt;&#x27;,container[&#x27;node&#x27;],
+                  &#x27;| jatah:&#x27;,container[&#x27;cpu&#x27;],&#x27;CPU dan&#x27;,container[&#x27;memory_mb&#x27;],&#x27;MiB RAM&#x27;)
+    if any(event[&#x27;event&#x27;]==&#x27;WAITING&#x27; for event in evidence[&#x27;events&#x27;]):
+        print(&#x27;   WAITING = menunggu: Mapper B baru mendapat tempat setelah Mapper A selesai.&#x27;)
+    if evidence[&#x27;final_status&#x27;]==&#x27;SUCCEEDED&#x27;:
+        print(&#x27;4. Semua tugas selesai. FINISHED / SUCCEEDED = pekerjaan berhasil.&#x27;)
+    else:
+        print(&#x27;4. Status pekerjaan:&#x27;,evidence[&#x27;final_status&#x27;])
+    free = all(node[&#x27;used_cpu&#x27;]==0 and node[&#x27;used_memory_mb&#x27;]==0 for node in evidence[&#x27;nodes&#x27;].values())
+    print(&#x27;Jatah CPU/RAM sudah dilepas:&#x27;, &#x27;ya&#x27; if free else &#x27;belum&#x27;)
+    if detail:
+        print(&#x27;Catatan lengkap urutan proses:&#x27;)
+        for event in evidence[&#x27;events&#x27;]:
+            print(f&quot; {event[&#x27;sequence&#x27;]:02d}. {event[&#x27;actor&#x27;]} {event[&#x27;event&#x27;]} | {event[&#x27;detail&#x27;]}&quot;)</code></pre></details><details><summary>Contoh kode pengiriman pekerjaan Hadoop</summary><pre><code>#!/usr/bin/env bash
+# Submit registry coverage to a configured Hadoop/YARN cluster.
+set -euo pipefail
+RUN_ID=&quot;$(date +%Y%m%d-%H%M%S)-$$&quot;
+HDFS_BASE=&quot;/user/$(id -un)/modul4-registry-$RUN_ID&quot;
+hdfs dfs -mkdir -p &quot;$HDFS_BASE/children&quot;
+hdfs dfs -put data/dummy/children.tsv &quot;$HDFS_BASE/children/children.tsv&quot;
+mapred streaming \
+  -D mapreduce.framework.name=yarn \
+  -D mapreduce.job.name=Modul4_DummyRegistryCoverage \
+  -D mapreduce.job.reduces=1 \
+  -files code/registry_mapper.py,code/registry_reducer.py \
+  -input &quot;$HDFS_BASE/children&quot; \
+  -output &quot;$HDFS_BASE/coverage&quot; \
+  -mapper &#x27;python3 registry_mapper.py&#x27; \
+  -reducer &#x27;python3 registry_reducer.py&#x27;
+hdfs dfs -cat &quot;$HDFS_BASE/coverage/part-*&quot;
+printf &#x27;\nHDFS_BASE=%s\n&#x27; &quot;$HDFS_BASE&quot;</code></pre></details><details><summary>Word Count: contoh cadangan menghitung kata</summary><pre><code>hadoop	3
+hdfs	1
+hive	3
+pig	1
+yarn	1</code></pre></details></details><p class="next-step"><strong>Setelah ini:</strong> kita membaca ringkasan tiap kabupaten menggunakan SQL dan menafsirkan persentasenya.</p></section><section id="analytics"><div class="eyebrow">03 · HIVE</div><h2>Kabupaten mana yang perlu diperhatikan?</h2><span class="badge local">Contoh: catatan imunisasi anak</span><p class="lead">Kita sudah mendapat jumlah anak per kabupaten. Sekarang kita menjawab pertanyaan yang sama dengan <strong>SQL</strong>, yaitu bahasa untuk meminta data dari tabel. Hive menyediakan cara analisis ini dalam ekosistem Hadoop.</p><p>Permintaan kita: pilih anak kelahiran 2023 yang memenuhi syarat, kelompokkan menurut kabupaten, lalu hitung jumlah penerima D1/D3 dan persentasenya. SQL mengolah data profil yang sama; hasilnya dibandingkan dengan penghitungan MapReduce.</p><div class="table-wrap"><table><thead><tr><th>Ukuran</th><th>Pertanyaan yang dijawab</th><th>Contoh Kabupaten Bandung</th></tr></thead><tbody><tr><td>Cakupan D3</td><td>Dari semua anak yang memenuhi syarat, berapa yang sudah menerima D3?</td><td>419 / 832 × 100 = 50,36%</td></tr><tr><td>Dropout / putus lanjut D1→D3</td><td>Dari anak yang sudah D1, berapa yang belum sampai D3?</td><td>(747 − 419) / 747 × 100 = 43,91%</td></tr></tbody></table></div><div class="action"><h3>Coba di terminal</h3><p>Jalankan analisis SQL untuk melihat cakupan dan putus lanjut dosis per kabupaten. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py hive</code></pre><p><strong>Perhatikan hasilnya:</strong> tabel persentase dan jumlah kabupaten prioritas. Pemeriksaan kecocokan dengan MapReduce tetap dijalankan; pesannya tampil melalui --detail.</p></div><h3>Hasil yang perlu dibaca</h3><div class="table-wrap"><table><thead><tr><th>Kabupaten</th><th>Anak yang dihitung</th><th>Sudah D1</th><th>Sudah D3</th><th>Cakupan D3</th><th>Putus lanjut</th></tr></thead><tbody><tr><td>Kabupaten Semarang</td><td>832</td><td>0</td><td>0</td><td>0,00%</td><td>N/A (D1 = 0)</td></tr><tr><td>Kabupaten Sleman</td><td>832</td><td>81</td><td>11</td><td>1,32%</td><td>86,42%</td></tr><tr><td>Kabupaten Kubu Raya</td><td>831</td><td>94</td><td>22</td><td>2,65%</td><td>76,60%</td></tr><tr><td>Kabupaten Agam</td><td>832</td><td>90</td><td>27</td><td>3,25%</td><td>70,00%</td></tr><tr><td>Kabupaten Gianyar</td><td>838</td><td>572</td><td>256</td><td>30,55%</td><td>55,24%</td></tr><tr><td>Kabupaten Ogan Komering Ilir</td><td>838</td><td>572</td><td>259</td><td>30,91%</td><td>54,72%</td></tr><tr><td>Kabupaten Maros</td><td>837</td><td>572</td><td>261</td><td>31,18%</td><td>54,37%</td></tr><tr><td>Kabupaten Jember</td><td>838</td><td>573</td><td>273</td><td>32,58%</td><td>52,36%</td></tr><tr><td>Kabupaten Bandung</td><td>832</td><td>747</td><td>419</td><td>50,36%</td><td>43,91%</td></tr><tr><td>Kabupaten Tangerang</td><td>832</td><td>747</td><td>422</td><td>50,72%</td><td>43,51%</td></tr><tr><td>Kabupaten Deli Serdang</td><td>832</td><td>747</td><td>424</td><td>50,96%</td><td>43,24%</td></tr><tr><td>Kabupaten Lampung Selatan</td><td>832</td><td>747</td><td>427</td><td>51,32%</td><td>42,84%</td></tr><tr><td>Kabupaten Banyuasin</td><td>832</td><td>654</td><td>503</td><td>60,46%</td><td>23,09%</td></tr><tr><td>Kabupaten Gowa</td><td>831</td><td>653</td><td>505</td><td>60,77%</td><td>22,66%</td></tr><tr><td>Kabupaten Malang</td><td>832</td><td>654</td><td>517</td><td>62,14%</td><td>20,95%</td></tr><tr><td>Kabupaten Badung</td><td>832</td><td>654</td><td>519</td><td>62,38%</td><td>20,64%</td></tr><tr><td>Kabupaten Bogor</td><td>838</td><td>750</td><td>677</td><td>80,79%</td><td>9,73%</td></tr><tr><td>Kabupaten Serang</td><td>838</td><td>750</td><td>680</td><td>81,15%</td><td>9,33%</td></tr><tr><td>Kabupaten Langkat</td><td>838</td><td>750</td><td>682</td><td>81,38%</td><td>9,07%</td></tr><tr><td>Kabupaten Lampung Tengah</td><td>837</td><td>749</td><td>684</td><td>81,72%</td><td>8,68%</td></tr><tr><td>Kabupaten Banyumas</td><td>838</td><td>829</td><td>768</td><td>91,65%</td><td>7,36%</td></tr><tr><td>Kabupaten Bantul</td><td>838</td><td>829</td><td>771</td><td>92,00%</td><td>7,00%</td></tr><tr><td>Kabupaten Tanah Datar</td><td>838</td><td>829</td><td>773</td><td>92,24%</td><td>6,76%</td></tr><tr><td>Kabupaten Sambas</td><td>837</td><td>828</td><td>775</td><td>92,59%</td><td>6,40%</td></tr></tbody></table></div><p><strong>Kabupaten Bandung:</strong> separuh anak sudah D3, tetapi banyak penerima D1 belum sampai D3. <strong>Kabupaten Semarang:</strong> belum ada penerima D1, sehingga dropout tidak dapat dihitung. <strong>N/A</strong> berarti tidak ada pembagi untuk perhitungan ini; bukan berarti dropout 0%.</p><p>Untuk contoh tindak lanjut, kita memilih kabupaten dengan cakupan D3 di bawah 80%: <strong>Kabupaten Semarang, Kabupaten Sleman, Kabupaten Kubu Raya, Kabupaten Agam, Kabupaten Gianyar, Kabupaten Ogan Komering Ilir, Kabupaten Maros, Kabupaten Jember, Kabupaten Bandung, Kabupaten Tangerang, Kabupaten Deli Serdang, Kabupaten Lampung Selatan, Kabupaten Banyuasin, Kabupaten Gowa, Kabupaten Malang, Kabupaten Badung</strong>. Batas 80% dipilih untuk latihan.</p><blockquote><strong>Kalimat untuk presentasi:</strong> “Cakupan melihat semua anak yang memenuhi syarat. Dropout melihat anak yang sudah memulai dosis pertama tetapi belum sampai dosis ketiga. Keduanya membantu kita memahami masalah yang berbeda.”</blockquote><h3>Eksplorasi: berapa putus lanjut keseluruhan?</h3><p>Keseluruhan berarti 12 provinsi dan 24 kabupaten dalam dataset sintetis, bukan statistik seluruh Indonesia. Jumlahkan penerima D1 dan D3 dahulu, lalu hitung persentasenya. Jangan merata-ratakan persentase kabupaten.</p><div class="action"><h3>Coba di terminal</h3><p>Tampilkan ringkasan seluruh wilayah dalam dataset. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py hive --analysis overall</code></pre><p><strong>Perhatikan hasilnya:</strong> putus lanjut 26,37% dan cakupan D3 53,18%.</p></div><div class="table-wrap"><table><thead><tr><th>Ukuran keseluruhan</th><th>Jumlah</th><th>Persentase</th></tr></thead><tbody><tr><td>Cakupan D3</td><td>10.655 / 20.035</td><td>53,18%</td></tr><tr><td>Putus lanjut D1 ke D3</td><td>3.816 / 14.471</td><td>26,37%</td></tr></tbody></table></div><h3>Eksplorasi: kabupaten mana yang putus lanjutnya tertinggi?</h3><div class="action"><h3>Coba di terminal</h3><p>Pilih lima kabupaten dengan putus lanjut tertinggi. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py hive --analysis highest</code></pre><p><strong>Perhatikan hasilnya:</strong> urutan persentase terbesar; kabupaten tanpa penerima D1 tidak masuk ranking.</p></div><div class="table-wrap"><table><thead><tr><th>Urutan</th><th>Provinsi / Kabupaten</th><th>D1</th><th>D3</th><th>Putus lanjut</th></tr></thead><tbody><tr><td>1</td><td>DI Yogyakarta / Kabupaten Sleman</td><td>81</td><td>11</td><td>86,42%</td></tr><tr><td>2</td><td>Kalimantan Barat / Kabupaten Kubu Raya</td><td>94</td><td>22</td><td>76,60%</td></tr><tr><td>3</td><td>Sumatera Barat / Kabupaten Agam</td><td>90</td><td>27</td><td>70,00%</td></tr><tr><td>4</td><td>Bali / Kabupaten Gianyar</td><td>572</td><td>256</td><td>55,24%</td></tr><tr><td>5</td><td>Sumatera Selatan / Kabupaten Ogan Komering Ilir</td><td>572</td><td>259</td><td>54,72%</td></tr></tbody></table></div><h3>Eksplorasi: kabupaten mana yang putus lanjutnya terendah?</h3><div class="action"><h3>Coba di terminal</h3><p>Pilih lima kabupaten dengan putus lanjut terendah. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py hive --analysis lowest</code></pre><p><strong>Perhatikan hasilnya:</strong> urutan persentase terkecil yang bisa dihitung. N/A bukan nol.</p></div><div class="table-wrap"><table><thead><tr><th>Urutan</th><th>Provinsi / Kabupaten</th><th>D1</th><th>D3</th><th>Putus lanjut</th></tr></thead><tbody><tr><td>1</td><td>Kalimantan Barat / Kabupaten Sambas</td><td>828</td><td>775</td><td>6,40%</td></tr><tr><td>2</td><td>Sumatera Barat / Kabupaten Tanah Datar</td><td>829</td><td>773</td><td>6,76%</td></tr><tr><td>3</td><td>DI Yogyakarta / Kabupaten Bantul</td><td>829</td><td>771</td><td>7,00%</td></tr><tr><td>4</td><td>Jawa Tengah / Kabupaten Banyumas</td><td>829</td><td>768</td><td>7,36%</td></tr><tr><td>5</td><td>Lampung / Kabupaten Lampung Tengah</td><td>749</td><td>684</td><td>8,68%</td></tr></tbody></table></div><p>Nilai sama diurutkan berdasarkan nama provinsi/kabupaten; lima baris bukan berarti lima tingkat persentase yang berbeda. Dropout rendah perlu dibaca bersama cakupan: anak yang belum D1 tidak menjadi pembagi dropout.</p><details><summary>Bandingkan provinsi atau ubah jumlah hasil</summary><pre><code>python code/demo.py hive --analysis province</code></pre><div class="table-wrap"><table><thead><tr><th>Provinsi</th><th>Anak dihitung</th><th>D1</th><th>D3</th><th>Cakupan D3</th><th>Putus lanjut</th></tr></thead><tbody><tr><td>Sumatera Selatan</td><td>1670</td><td>1226</td><td>762</td><td>45,63%</td><td>37,85%</td></tr><tr><td>Sulawesi Selatan</td><td>1668</td><td>1225</td><td>766</td><td>45,92%</td><td>37,47%</td></tr><tr><td>Bali</td><td>1670</td><td>1226</td><td>775</td><td>46,41%</td><td>36,79%</td></tr><tr><td>Jawa Timur</td><td>1670</td><td>1227</td><td>790</td><td>47,31%</td><td>35,62%</td></tr><tr><td>Jawa Barat</td><td>1670</td><td>1497</td><td>1096</td><td>65,63%</td><td>26,79%</td></tr><tr><td>Banten</td><td>1670</td><td>1497</td><td>1102</td><td>65,99%</td><td>26,39%</td></tr><tr><td>Sumatera Utara</td><td>1670</td><td>1497</td><td>1106</td><td>66,23%</td><td>26,12%</td></tr><tr><td>Lampung</td><td>1669</td><td>1496</td><td>1111</td><td>66,57%</td><td>25,74%</td></tr><tr><td>DI Yogyakarta</td><td>1670</td><td>910</td><td>782</td><td>46,83%</td><td>14,07%</td></tr><tr><td>Kalimantan Barat</td><td>1668</td><td>922</td><td>797</td><td>47,78%</td><td>13,56%</td></tr><tr><td>Sumatera Barat</td><td>1670</td><td>919</td><td>800</td><td>47,90%</td><td>12,95%</td></tr><tr><td>Jawa Tengah</td><td>1670</td><td>829</td><td>768</td><td>45,99%</td><td>7,36%</td></tr></tbody></table></div><p>Untuk sepuluh hasil tertinggi, tambahkan --limit 10. Untuk seluruh analisis, pilih --analysis all.</p><pre><code>python code/demo.py hive --analysis highest --limit 10</code></pre><pre><code>python code/demo.py hive --analysis all</code></pre></details><details><summary>Detail teknis: query SQL dan tabel Hive</summary><p>SELECT memilih hasil; WHERE membatasi anak yang dihitung; GROUP BY mengelompokkan wilayah; SUM menjumlahkan status dosis. NULLIF menjaga agar query tidak membagi angka dengan nol.</p><details><summary>Query yang menghitung cakupan dan dropout</summary><pre><code>-- Synthetic child registry, one row per child. Same query tested in SQLite.
+-- Eligibility is an invented teaching flag, not a clinical schedule.
+WITH cohort AS (
+    SELECT * FROM vaccinations
+    WHERE birth_year = 2023 AND dose3_due = 1
+)
+SELECT province, district, COUNT(*) AS eligible_children,
+       SUM(dose1) AS dose1_children, SUM(dose3) AS dose3_children,
+       ROUND(100.0 * SUM(dose3) / COUNT(*), 2) AS coverage_pct,
+       ROUND(100.0 * (SUM(dose1) - SUM(dose3))
+             / NULLIF(SUM(dose1), 0), 2) AS dropout_pct,
+       SUM(CASE WHEN dose3 = 0 THEN 1 ELSE 0 END) AS missed_dose3
+FROM cohort
+GROUP BY province, district
+ORDER BY coverage_pct ASC, province ASC, district ASC;</code></pre></details><details><summary>Query putus lanjut keseluruhan</summary><pre><code>-- Overall rate is computed from counts, not the mean of district percentages.
+SELECT COUNT(*) AS eligible_children,
+       COALESCE(SUM(dose1), 0) AS dose1_children,
+       COALESCE(SUM(dose3), 0) AS dose3_children,
+       COALESCE(SUM(CASE WHEN dose1 = 1 AND dose3 = 0 THEN 1 ELSE 0 END), 0) AS dropout_children,
+       COALESCE(SUM(CASE WHEN dose3 = 0 THEN 1 ELSE 0 END), 0) AS missed_dose3,
+       COALESCE(SUM(CASE WHEN dose1 = 0 THEN 1 ELSE 0 END), 0) AS never_started_dose1,
+       ROUND(100.0 * SUM(dose3) / NULLIF(COUNT(*), 0), 2) AS coverage_pct,
+       ROUND(100.0 * (SUM(dose1) - SUM(dose3)) / NULLIF(SUM(dose1), 0), 2) AS dropout_pct
+FROM vaccinations
+WHERE birth_year = 2023 AND dose3_due = 1;</code></pre></details><details><summary>Query top 5 tertinggi</summary><pre><code>WITH district_counts AS (
+    SELECT province, district, COUNT(*) AS eligible_children,
+           SUM(dose1) AS dose1_children, SUM(dose3) AS dose3_children,
+           SUM(CASE WHEN dose1 = 1 AND dose3 = 0 THEN 1 ELSE 0 END) AS dropout_children,
+           SUM(CASE WHEN dose3 = 0 THEN 1 ELSE 0 END) AS missed_dose3,
+           SUM(CASE WHEN dose1 = 0 THEN 1 ELSE 0 END) AS never_started_dose1
+    FROM vaccinations
+    WHERE birth_year = 2023 AND dose3_due = 1
+    GROUP BY province, district
+)
+SELECT province, district, eligible_children, dose1_children, dose3_children,
+       dropout_children, missed_dose3, never_started_dose1,
+       ROUND(100.0 * dose3_children / eligible_children, 2) AS coverage_pct,
+       ROUND(100.0 * dropout_children / dose1_children, 2) AS dropout_pct
+FROM district_counts
+WHERE dose1_children &gt; 0
+-- Sort the unrounded rate. Ties use province/district for reproducible display.
+ORDER BY 1.0 * dropout_children / dose1_children DESC, province ASC, district ASC
+LIMIT 5;</code></pre></details><details><summary>Query top 5 terendah</summary><pre><code>WITH district_counts AS (
+    SELECT province, district, COUNT(*) AS eligible_children,
+           SUM(dose1) AS dose1_children, SUM(dose3) AS dose3_children,
+           SUM(CASE WHEN dose1 = 1 AND dose3 = 0 THEN 1 ELSE 0 END) AS dropout_children,
+           SUM(CASE WHEN dose3 = 0 THEN 1 ELSE 0 END) AS missed_dose3,
+           SUM(CASE WHEN dose1 = 0 THEN 1 ELSE 0 END) AS never_started_dose1
+    FROM vaccinations
+    WHERE birth_year = 2023 AND dose3_due = 1
+    GROUP BY province, district
+)
+SELECT province, district, eligible_children, dose1_children, dose3_children,
+       dropout_children, missed_dose3, never_started_dose1,
+       ROUND(100.0 * dose3_children / eligible_children, 2) AS coverage_pct,
+       ROUND(100.0 * dropout_children / dose1_children, 2) AS dropout_pct
+FROM district_counts
+WHERE dose1_children &gt; 0
+ORDER BY 1.0 * dropout_children / dose1_children ASC, province ASC, district ASC
+LIMIT 5;</code></pre></details><p>External table memberi nama dan susunan kolom pada file input. LOCATION menunjukkan lokasi filenya. Hive dapat memakai mesin pemrosesan yang berbeda sesuai konfigurasi.</p><details><summary>Contoh definisi external table</summary><pre><code>-- Registry table. Set --hivevar registry_path=THE_HDFS_CHILDREN_DIRECTORY.
+CREATE DATABASE IF NOT EXISTS modul4_registry;
+USE modul4_registry;
+CREATE EXTERNAL TABLE IF NOT EXISTS vaccinations (
+    child_id STRING, province STRING, district STRING, birth_date STRING,
+    birth_year INT, dose3_due INT, dose1 INT, dose2 INT, dose3 INT, last_updated STRING
+)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY &#x27;\t&#x27;
+STORED AS TEXTFILE;
+ALTER TABLE vaccinations SET LOCATION &#x27;${hivevar:registry_path}&#x27;;</code></pre></details></details><p class="next-step"><strong>Setelah ini:</strong> setelah melihat kabupatennya, kita membuat daftar anak yang belum menerima D3.</p></section><section id="etl"><div class="eyebrow">04 · PIG</div><h2>Pilih anak yang belum menerima dosis ketiga</h2><span class="badge local">Contoh: catatan imunisasi anak</span><p class="lead">Ringkasan kabupaten belum memberi daftar nama atau ID anak. Pig membantu menulis urutan penyaringan data agar kita mendapatkan daftar anak yang perlu ditelusuri.</p><p>Proses membaca, memilih, lalu menyimpan data ini disebut <strong>ETL</strong>. Kita memilih kelompok kelahiran 2023 yang memenuhi syarat, lalu memilih yang belum D3.</p><div class="flow"><div>Baca 80.137 profil</div><div>Pilih 20.035 yang memenuhi syarat</div><div>Pilih 9.380 yang belum D3</div><div>Pisahkan daftar tindak lanjut</div></div><div class="action"><h3>Coba di terminal</h3><p>Jalankan penyaringan untuk membuat daftar kelompok analisis dan daftar yang belum D3. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py pig</code></pre><p><strong>Perhatikan hasilnya:</strong> urutan 80.137 → 20.035 → 9.380 dan contoh ID anak yang terpilih.</p></div><h3>Empat file untuk tujuan berbeda</h3><div class="table-wrap"><table><thead><tr><th>File hasil</th><th>Isi</th><th>Kegunaan</th></tr></thead><tbody><tr><td>cohort.csv</td><td>20.035 anak yang memenuhi syarat</td><td>Kelompok lengkap untuk analisis</td></tr><tr><td>missed_dose3.csv</td><td>9.380 anak dari kelompok tadi yang belum D3</td><td>Daftar lengkap yang belum D3</td></tr><tr><td>dropout_d1_d3.csv</td><td>3.816 anak sudah D1 tetapi belum D3</td><td>Daftar putus lanjut</td></tr><tr><td>not_started_d1.csv</td><td>5.564 anak belum memulai D1</td><td>Daftar yang belum memulai imunisasi</td></tr></tbody></table></div><p><strong>9.380 belum D3 = 3.816 putus lanjut + 5.564 belum memulai D1.</strong></p><h3>Telusuri wilayah hasil analisis Hive</h3><p>Kabupaten Jember termasuk wilayah dengan putus lanjut tertinggi dalam dataset. Pilih provinsi dan kabupatennya untuk membuat daftar anak di wilayah tersebut.</p><pre><code>python code/demo.py pig --province &quot;Jawa Timur&quot; --district &quot;Kabupaten Jember&quot;</code></pre><p>Buka dropout_d1_d3.csv pada folder hasil, lalu ambil ID anak untuk pencarian HBase. Pemilihan kabupaten memakai nama provinsi juga agar wilayahnya tidak tertukar.</p><p>Contoh ID yang dapat ditelusuri: <strong>D000030</strong>. Anak ini sudah D1 dan D2, tetapi belum D3. Daftar belum D3 juga dapat memuat anak yang belum menerima D1 sama sekali. Itulah sebabnya jumlah belum D3 berbeda dari jumlah putus lanjut setelah D1.</p><blockquote><strong>Kalimat untuk presentasi:</strong> “Pig menyaring data langkah demi langkah. Dari 80.137 anak kita memilih 20.035 yang memenuhi syarat, lalu menemukan 9.380 yang belum dosis ketiga. Hasilnya berupa daftar anak, bukan hanya persentase kabupaten.”</blockquote><details><summary>Lihat contoh anak dan kode penyaringan</summary><div class="table-wrap"><table><thead><tr><th>ID anak</th><th>Kabupaten</th><th>Sudah D1</th><th>Sudah D2</th><th>Sudah D3</th></tr></thead><tbody><tr><td>D000026</td><td>Kabupaten Bandung</td><td>1</td><td>1</td><td>0</td></tr><tr><td>D000027</td><td>Kabupaten Bandung</td><td>1</td><td>1</td><td>0</td></tr><tr><td>D000028</td><td>Kabupaten Bandung</td><td>1</td><td>1</td><td>0</td></tr><tr><td>D000029</td><td>Kabupaten Bandung</td><td>1</td><td>1</td><td>0</td></tr><tr><td>D000030</td><td>Kabupaten Bandung</td><td>1</td><td>1</td><td>0</td></tr></tbody></table></div><p>Dalam Pig Latin: LOAD berarti baca file, FILTER berarti pilih baris sesuai kondisi, dan STORE berarti simpan hasil. Data tahun lahir lain tetap ada di sumber, tetapi tidak masuk daftar yang dipilih.</p><details><summary>Kode Pig Latin: baca → pilih → simpan</summary><pre><code>-- Input children.tsv has ten columns and no header.
+raw = LOAD &#x27;$INPUT&#x27; USING PigStorage(&#x27;\t&#x27;) AS (
+    child_id:chararray, province:chararray, district:chararray, birth_date:chararray,
+    birth_year:int, dose3_due:int, dose1:int, dose2:int, dose3:int, last_updated:chararray
+);
+cohort = FILTER raw BY birth_year == 2023 AND dose3_due == 1;
+missed = FILTER cohort BY dose3 == 0;
+dropout = FILTER missed BY dose1 == 1;
+not_started = FILTER missed BY dose1 == 0;
+STORE cohort INTO &#x27;$OUTPUT/cohort&#x27; USING PigStorage(&#x27;\t&#x27;);
+STORE missed INTO &#x27;$OUTPUT/missed-dose3&#x27; USING PigStorage(&#x27;\t&#x27;);
+STORE dropout INTO &#x27;$OUTPUT/dropout-d1-d3&#x27; USING PigStorage(&#x27;\t&#x27;);
+STORE not_started INTO &#x27;$OUTPUT/not-started-d1&#x27; USING PigStorage(&#x27;\t&#x27;);</code></pre></details></details><p class="next-step"><strong>Setelah ini:</strong> ambil satu ID dari daftar tadi dan lihat riwayatnya melalui HBase.</p></section><section id="lookup"><div class="eyebrow">05 · HBASE</div><h2>Cari riwayat satu anak dari ID-nya</h2><span class="badge local">Contoh: catatan imunisasi anak</span><p class="lead">Dari daftar 9.380 anak belum D3, kita memilih ID <strong>D000030</strong>. HBase digunakan untuk mencari catatan berdasarkan kunci tertentu, seperti ID anak.</p><p>ID anak disebut <strong>row key</strong>: penanda untuk menemukan satu baris. Informasinya dikelompokkan menjadi <strong>profile</strong> untuk identitas dan <strong>history</strong> untuk riwayat dosis. Kelompok kolom ini disebut <strong>column family</strong>.</p><div class="flow"><div>Pilih ID dari daftar Pig</div><div>Cari ID D000030</div><div>Baca profil dan riwayat</div><div>DTP3 belum diterima</div></div><div class="action"><h3>Coba di terminal</h3><p>Jalankan pencarian untuk anak yang dipilih. Opsi --child menentukan ID yang dicari. Ketik perintah berikut di PowerShell, lalu tekan <strong>Enter</strong>.</p><pre><code>python code/demo.py hbase --child D000030</code></pre><p><strong>Perhatikan hasilnya:</strong> anak ditemukan di Kabupaten Bandung, memiliki catatan DTP1/DTP2, dan belum menerima DTP3.</p></div><div class="split"><div class="card"><h3>Anak yang ditemukan</h3><div class="table-wrap"><table><thead><tr><th>Informasi</th><th>Hasil</th></tr></thead><tbody><tr><td>ID anak</td><td>D000030</td></tr><tr><td>Provinsi</td><td>Jawa Barat</td></tr><tr><td>Kabupaten</td><td>Kabupaten Bandung</td></tr><tr><td>Tanggal lahir</td><td>2023-01-02</td></tr></tbody></table></div></div><div class="card"><h3>Riwayat pemberian dosis</h3><div class="table-wrap"><table><thead><tr><th>Dosis</th><th>Tanggal</th><th>Fasilitas</th></tr></thead><tbody><tr><td>DTP1</td><td>2023-06-01</td><td>FAC01</td></tr><tr><td>DTP2</td><td>2023-07-01</td><td>FAC01</td></tr></tbody></table></div><p><strong>DTP3 belum diterima.</strong> Kita dapat melihat dosis yang sudah ada tanpa menghitung ulang seluruh kabupaten.</p></div></div><blockquote><strong>Kalimat untuk presentasi:</strong> “Setelah mendapatkan daftar anak yang belum dosis ketiga, kita memilih satu ID. HBase mencari ID itu dan menampilkan profil serta riwayat dosisnya.”</blockquote><details><summary>Pahami bentuk kolom HBase dan contoh kodenya</summary><div class="table-wrap"><table><thead><tr><th>Istilah</th><th>Arti</th><th>Contoh</th></tr></thead><tbody><tr><td>Row key</td><td>ID baris yang dicari</td><td>D000030</td></tr><tr><td>Column family</td><td>Kelompok kolom</td><td>history</td></tr><tr><td>Qualifier</td><td>Nama kolom dalam kelompok</td><td>DTP1</td></tr><tr><td>Value</td><td>Isi kolom</td><td>2023-06-01|FAC01</td></tr></tbody></table></div><p><code>history:DTP1</code> dibaca “kolom DTP1 dalam kelompok history”. Isinya adalah tanggal pemberian dosis dan kode fasilitas.</p><div class="table-wrap"><table><thead><tr><th>Row key</th><th>Column family</th><th>Qualifier</th><th>Value</th></tr></thead><tbody><tr><td>D000030</td><td>profile</td><td>province</td><td>Jawa Barat</td></tr><tr><td>D000030</td><td>profile</td><td>district</td><td>Kabupaten Bandung</td></tr><tr><td>D000030</td><td>history</td><td>DTP1</td><td>2023-06-01|FAC01</td></tr><tr><td>D000030</td><td>history</td><td>DTP2</td><td>2023-07-01|FAC01</td></tr></tbody></table></div><p>HBase disebut wide-column karena data diatur menurut row key dan kelompok kolom. Tanggal vaksinasi di value berbeda dari timestamp versi sel. Kode PUT menyimpan catatan; GET mengambilnya.</p><details><summary>Contoh PUT dan GET untuk satu anak</summary><pre><code># Example profile/history columns for a synthetic child row.
+# Run create once; for an existing table use put/get only.
+create &#x27;modul4_registry_demo&#x27;, &#x27;profile&#x27;, &#x27;history&#x27;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:province&quot;, &quot;Jawa Barat&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:district&quot;, &quot;Kabupaten Bandung&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:birth_date&quot;, &quot;2023-01-02&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:birth_year&quot;, &quot;2023&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:dose3_due&quot;, &quot;1&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:dose1&quot;, &quot;1&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:dose2&quot;, &quot;1&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:dose3&quot;, &quot;0&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;profile:last_updated&quot;, &quot;2026-10-01&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;history:DTP1&quot;, &quot;2023-06-01|FAC01&quot;
+put &quot;modul4_registry_demo&quot;, &quot;D000030&quot;, &quot;history:DTP2&quot;, &quot;2023-07-01|FAC01&quot;
+get &quot;modul4_registry_demo&quot;, &quot;D000030&quot;</code></pre></details></details><details><summary>Coba ID lain: catatan kosong atau anak tidak ditemukan</summary><p>D000046 adalah anak yang terdaftar tetapi belum mempunyai catatan dosis. TIDAK_ADA adalah ID yang tidak ada dalam data. Keduanya harus dibedakan.</p><p>Untuk melihat anak yang terdaftar dengan riwayat kosong, ketik:</p><pre><code>python code/demo.py hbase --child D000046</code></pre><p>Untuk melihat hasil ID yang tidak ditemukan, ketik:</p><pre><code>python code/demo.py hbase --child TIDAK_ADA</code></pre></details><p class="next-step"><strong>Setelah ini:</strong> rangkum peran alat dan manfaat hasil yang sudah kita lihat.</p></section><section id="real"><div class="eyebrow">PELENGKAP · WHO/UNICEF</div><h2>Data WHO menjawab pertanyaan yang berbeda</h2><p class="lead">Data WHO/UNICEF yang disimpan di proyek adalah ringkasan menurut negara dan tahun. Data ini cocok untuk melihat tren nasional. Data buatan pada demo utama memberi catatan per anak agar penyaringan dan pencarian riwayat dapat diperlihatkan.</p><div class="table-wrap"><table><thead><tr><th>Contoh pertanyaan</th><th>Data yang sesuai</th></tr></thead><tbody><tr><td>Berapa perkiraan cakupan DTP3 Indonesia pada tahun tertentu?</td><td>Data WHO/UNICEF: ringkasan negara/tahun</td></tr><tr><td>Anak mana di Kabupaten Bandung yang belum D3, dan kapan menerima D1?</td><td>Data demo: profil dan catatan dosis per anak</td></tr></tbody></table></div><p>Data WHO tidak memuat ID anak atau provinsi untuk melakukan pencarian tersebut. Data buatan dibuat terpisah dan tidak diturunkan dari persentase WHO.</p><details><summary>Lihat pelengkap WHO jika ingin membahas tren antarnegara</summary><p>Pelengkap ini memakai lima negara pada tahun 2020–2025. Angkanya adalah ringkasan nasional, sehingga cara membacanya berbeda dari riwayat seorang anak.</p><p><a href="../who-presentation/index.html">Buka hasil WHO lima negara</a> · <a href="../../DEMO_MANUAL_WHO_WINDOWS.md">Baca panduan pelengkap WHO</a></p></details></section><section id="close"><div class="eyebrow">PENUTUP</div><h2>Apa yang sudah kita pelajari?</h2><p class="lead">Kita mengikuti catatan imunisasi dari penyimpanan sampai daftar anak dan riwayat dosisnya. Setiap alat membantu menjawab satu bagian dari pertanyaan awal.</p><div class="table-wrap"><table><thead><tr><th>Alat</th><th>Ingat tugas utamanya</th></tr></thead><tbody><tr><td>HDFS</td><td>Simpan potongan file dan salinannya agar data tetap dapat dibaca</td></tr><tr><td>YARN</td><td>Atur jatah CPU/RAM untuk menjalankan pekerjaan</td></tr><tr><td>MapReduce</td><td>Bagi data, kelompokkan, lalu jumlahkan hasilnya</td></tr><tr><td>Hive</td><td>Gunakan SQL untuk meringkas dan menganalisis data</td></tr><tr><td>Pig</td><td>Pilih data langkah demi langkah dan simpan daftar hasilnya</td></tr><tr><td>HBase</td><td>Cari profil dan riwayat berdasarkan satu ID anak</td></tr></tbody></table></div><blockquote><strong>Kalimat untuk presentasi:</strong> “Dari 80.137 anak, kita memilih 20.035 yang memenuhi syarat. Sebanyak 10.655 sudah menerima dosis ketiga dan 9.380 belum. Ringkasan kabupaten membantu memilih wilayah yang perlu diperhatikan, sedangkan daftar ID membantu menelusuri riwayat tiap anak.”</blockquote><h3>Hubungannya dengan 5V Big Data</h3><p>5V membantu menjelaskan tantangan dan manfaat data. Sampel kecil ini digunakan untuk mengikuti alur; skala besar dan pembaruan yang terus masuk menjadi konteks pengembangannya.</p><div class="table-wrap"><table><thead><tr><th>5V</th><th>Arti sederhana</th><th>Pada contoh imunisasi</th></tr></thead><tbody><tr><td>Volume</td><td>Banyaknya data</td><td>Registri nasional dapat berisi banyak anak; latihan ini memakai 80.137</td></tr><tr><td>Velocity</td><td>Seberapa cepat data masuk/diperbarui</td><td>Catatan baru dapat datang setiap hari; latihan ini memakai satu kumpulan data</td></tr><tr><td>Variety</td><td>Beragam bentuk dan sumber data</td><td>Profil anak dan catatan dosis memiliki kolom berbeda; ganti format file saja tidak menambah keragaman sumber</td></tr><tr><td>Veracity</td><td>Seberapa dapat dipercaya datanya</td><td>Periksa ID unik, urutan tanggal/dosis, dan kecocokan profil dengan riwayat</td></tr><tr><td>Value</td><td>Manfaat yang diperoleh</td><td>Temukan wilayah bercakupan rendah dan anak yang belum menerima D3</td></tr></tbody></table></div><p>Hasil ini membantu menjelaskan tindak lanjut imunisasi. Prediksi wabah merupakan pekerjaan lanjutan yang memerlukan data tambahan, model, dan pengujian.</p><h3>Ingin mengulang latihan?</h3><p>Untuk melihat seluruh tahap sekaligus, jalankan perintah di bawah. <code>all</code> berarti semua tahap. Program membuat sesi baru dan menyimpan hasil setiap percobaan dalam folder baru. Saat presentasi, jalankan perintah per tahap agar mudah dijelaskan.</p><pre><code>python code/demo.py all</code></pre><p>Nama folder hasil muncul di akhir proses. Memulai lagi dengan <code>storage</code> membuat sesi baru. Mengulang tahap lain menggunakan sesi yang sedang aktif tanpa menimpa hasil sebelumnya.</p><p><a href="../../DEMO_MANUAL_WINDOWS.md">Panduan langkah demi langkah</a> · <a href="../../PANDUAN_DEMO_HASIL.md">Kalimat untuk menjelaskan tiap tahap</a></p><details><summary>File hasil dan catatan teknis</summary><ul><li><a href="../../data/dummy/README.md">Kolom dan asumsi data buatan</a></li><li><a href="registry_coverage.csv">Cakupan dan putus lanjut 24 kabupaten</a></li><li><a href="registry_missed_dose3.csv">Daftar 9.380 anak belum dosis ketiga</a></li><li><a href="registry_lookup.json">Hasil pencarian D000030</a></li><li><a href="registry_column_cells.csv">Contoh kolom HBase</a></li><li><a href="registry_analysis.json">Ringkasan keseluruhan, ranking putus lanjut, dan perbandingan provinsi</a></li><li><a href="registry_dropout_d1_d3.csv">Daftar anak sudah D1 tetapi belum D3</a></li><li><a href="registry_not_started_d1.csv">Daftar anak belum memulai D1</a></li><li><a href="registry-storage/hdfs/results.json">Catatan pembacaan dan pemulihan blok</a></li><li><a href="registry-mapreduce/yarn.json">Catatan jatah kapasitas dan urutan pekerjaan</a></li><li><a href="evidence.json">Catatan perhitungan dan pemeriksaan sumber</a></li></ul></details></section></main><footer>Modul 4 · Hadoop Ecosystem · studi kasus registri imunisasi</footer><script>const sections=[...document.querySelectorAll("section")];const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("active",a.hash==="#"+entry.target.id));}}},{rootMargin:"-20% 0px -55% 0px"});sections.forEach(s=>observer.observe(s));</script></body></html>

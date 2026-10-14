@@ -1,0 +1,8 @@
+# Contoh HBase Shell untuk satu anak sintetis. Jalankan sekali di tabel demo baru.
+create 'modul4_demo_history', 'profile', 'vaccine'
+put 'modul4_demo_history', 'A004', 'profile:district', 'Utara'
+put 'modul4_demo_history', 'A004', 'profile:birth_year', '2023'
+put 'modul4_demo_history', 'A004', 'vaccine:dose1', '1'
+put 'modul4_demo_history', 'A004', 'vaccine:dose3', '0'
+get 'modul4_demo_history', 'A004'
+# Memasukkan satu contoh ini bukan sinkronisasi seluruh dataset ke HBase.

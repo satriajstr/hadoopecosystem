@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hasil Pengolahan Imunisasi · Hadoop Ecosystem</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script src="dashboard.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="brand"><div><strong>Registri Imunisasi Anak</strong><span>Hadoop Ecosystem</span></div></div>
+    <div class="connection"><span id="connection-dot" class="dot"></span><span id="connection-text">Menghubungkan…</span><button id="refresh" type="button" aria-label="Perbarui hasil sekarang">Perbarui</button></div>
+  </header>
+  <main>
+    <div class="page-title"><div><h1>Pengolahan data imunisasi</h1><p id="session-label">Menunggu sesi baru</p></div><span class="source-tag">Data imunisasi sintetis</span></div>
+    <section class="metrics" aria-label="Ringkasan hasil">
+      <div><span>Profil anak</span><strong id="metric-children">—</strong><small>Hasil penyimpanan</small></div>
+      <div><span>Catatan vaksinasi</span><strong id="metric-events">—</strong><small>Satu catatan per dosis</small></div>
+      <div><span>Anak dianalisis</span><strong id="metric-cohort">—</strong><small id="metric-cohort-note">Menunggu penghitungan</small></div>
+      <div><span>Cakupan D3</span><strong id="metric-coverage">—</strong><small>Sudah D3 / anak dianalisis</small></div>
+    </section>
+    <section id="storage" class="stage-section"><div class="section-heading"><div><span class="step">01</span><h2>HDFS · Penyimpanan</h2></div><span class="stage-status" id="status-storage">Belum diproses</span></div><div id="content-storage"></div></section>
+    <section id="mapreduce" class="stage-section"><div class="section-heading"><div><span class="step">02</span><h2>MapReduce + YARN · Penghitungan</h2></div><span class="stage-status" id="status-mapreduce">Belum diproses</span></div><div id="content-mapreduce"></div></section>
+    <section id="hive" class="stage-section"><div class="section-heading"><div><span class="step">03</span><h2>Hive · Cakupan dan putus lanjut</h2></div><span class="stage-status" id="status-hive">Belum diproses</span></div><div id="content-hive"></div></section>
+    <section id="pig" class="stage-section"><div class="section-heading"><div><span class="step">04</span><h2>Pig · Daftar anak terpilih</h2></div><span class="stage-status" id="status-pig">Belum diproses</span></div><div id="content-pig"></div></section>
+    <section id="hbase" class="stage-section"><div class="section-heading"><div><span class="step">05</span><h2>HBase · Riwayat seorang anak</h2></div><span class="stage-status" id="status-hbase">Belum diproses</span></div><div id="content-hbase"></div></section>
+    <footer>Kelompok analisis mengikuti hasil run: kelahiran 2023 yang ditandai sudah waktunya menerima D3. Nama wilayah asli; data anak dan dosis buatan. Hasil ini bukan statistik kesehatan Indonesia.</footer>
+  </main>
+</body>
+</html>

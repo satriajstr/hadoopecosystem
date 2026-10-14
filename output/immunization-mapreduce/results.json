@@ -1,0 +1,249 @@
+{
+  "runtime": "Two local Python mapper subprocesses; local sort; Python reducer",
+  "built_utc": "2026-10-08T12:14:35.637648+00:00",
+  "native_yarn": "NOT RUN",
+  "source": "WHO/UNICEF WUENIC project snapshot, 2025 revision",
+  "metric": "Unweighted arithmetic mean of annual DTP3 estimates per country, 2020-2025",
+  "countries": {
+    "IDN": "Indonesia",
+    "MYS": "Malaysia",
+    "THA": "Thailand",
+    "VNM": "Viet Nam",
+    "PHL": "Philippines"
+  },
+  "source_input_rows": 20032,
+  "selected_rows": 30,
+  "mapper_input_rows": [
+    10016,
+    10016
+  ],
+  "mapper_output_rows": [
+    15,
+    15
+  ],
+  "input": [
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "year": 2020,
+      "coverage_pct": 77.0
+    },
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "year": 2021,
+      "coverage_pct": 67.0
+    },
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "year": 2022,
+      "coverage_pct": 91.0
+    },
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "year": 2023,
+      "coverage_pct": 83.0
+    },
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "year": 2024,
+      "coverage_pct": 78.0
+    },
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "year": 2025,
+      "coverage_pct": 82.0
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "year": 2020,
+      "coverage_pct": 98.0
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "year": 2021,
+      "coverage_pct": 95.0
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "year": 2022,
+      "coverage_pct": 97.0
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "year": 2023,
+      "coverage_pct": 95.0
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "year": 2024,
+      "coverage_pct": 93.0
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "year": 2025,
+      "coverage_pct": 95.0
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "year": 2020,
+      "coverage_pct": 83.0
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "year": 2021,
+      "coverage_pct": 69.0
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "year": 2022,
+      "coverage_pct": 84.0
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "year": 2023,
+      "coverage_pct": 89.0
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "year": 2024,
+      "coverage_pct": 71.0
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "year": 2025,
+      "coverage_pct": 71.0
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "year": 2020,
+      "coverage_pct": 97.0
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "year": 2021,
+      "coverage_pct": 92.0
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "year": 2022,
+      "coverage_pct": 92.0
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "year": 2023,
+      "coverage_pct": 92.0
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "year": 2024,
+      "coverage_pct": 92.0
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "year": 2025,
+      "coverage_pct": 92.0
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "year": 2020,
+      "coverage_pct": 94.0
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "year": 2021,
+      "coverage_pct": 83.0
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "year": 2022,
+      "coverage_pct": 91.0
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "year": 2023,
+      "coverage_pct": 65.0
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "year": 2024,
+      "coverage_pct": 97.0
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "year": 2025,
+      "coverage_pct": 97.0
+    }
+  ],
+  "results": [
+    {
+      "area_code": "IDN",
+      "area_name": "Indonesia",
+      "key": "IDN|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+      "sum_of_year_percentages": "478.0",
+      "year_count": 6,
+      "mean_yearly_coverage_pct": "79.67"
+    },
+    {
+      "area_code": "MYS",
+      "area_name": "Malaysia",
+      "key": "MYS|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+      "sum_of_year_percentages": "573.0",
+      "year_count": 6,
+      "mean_yearly_coverage_pct": "95.50"
+    },
+    {
+      "area_code": "PHL",
+      "area_name": "Philippines",
+      "key": "PHL|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+      "sum_of_year_percentages": "467.0",
+      "year_count": 6,
+      "mean_yearly_coverage_pct": "77.83"
+    },
+    {
+      "area_code": "THA",
+      "area_name": "Thailand",
+      "key": "THA|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+      "sum_of_year_percentages": "557.0",
+      "year_count": 6,
+      "mean_yearly_coverage_pct": "92.83"
+    },
+    {
+      "area_code": "VNM",
+      "area_name": "Viet Nam",
+      "key": "VNM|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+      "sum_of_year_percentages": "527.0",
+      "year_count": 6,
+      "mean_yearly_coverage_pct": "87.83"
+    }
+  ],
+  "interpretation": "Not pooled population coverage or a global mean; no infant population weights."
+}

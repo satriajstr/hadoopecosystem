@@ -1,0 +1,34 @@
+{
+  "verified_utc": "2026-10-12T11:38:16.639597+00:00",
+  "unit_tests": 6,
+  "actual_cli_stages": [
+    "storage",
+    "mapreduce",
+    "hive",
+    "pig",
+    "hbase"
+  ],
+  "verified_run": "20261012-183115-584_cupv",
+  "empty_start_verified": true,
+  "progressive_stage_loading_verified": true,
+  "latest_lookup_updated_verified": true,
+  "new_session_and_cleared_run_tests": true,
+  "partial_write_tests": true,
+  "artifact_access_restrictions_verified": true,
+  "source_hashes_preserved": true,
+  "http_html_api_csv_verified": true,
+  "browser_rendering_verified": true,
+  "browser_filters_verified": {
+    "province": "Jawa Barat",
+    "cohort": 1670,
+    "coverage_pct": 65.63,
+    "dropout_pct": 26.79,
+    "pig_list": "not_started_d1"
+  },
+  "synthetic": true,
+  "responsive_layout_verified": {
+    "desktop": 1280,
+    "narrow": 320,
+    "narrow_page_width": 305
+  }
+}

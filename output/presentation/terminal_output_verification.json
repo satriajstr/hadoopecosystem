@@ -1,0 +1,23 @@
+{
+  "compact_and_detail_verified": {
+    "storage": {
+      "compact_lines": 3,
+      "detail_lines": 14
+    },
+    "yarn": {
+      "compact_lines": 3,
+      "detail_lines": 30
+    },
+    "ranking": {
+      "compact_lines": 7,
+      "detail_lines": 9
+    }
+  },
+  "all_stages_cli_verified": true,
+  "hbase_detail_cli_verified": true,
+  "unit_tests_this_turn": {
+    "registry": 10,
+    "concept_models": 6
+  },
+  "dataset_counts_unchanged": true
+}

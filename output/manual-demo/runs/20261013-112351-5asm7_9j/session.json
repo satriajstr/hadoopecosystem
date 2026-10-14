@@ -1,0 +1,22 @@
+{
+  "run_id": "20261013-112351-5asm7_9j",
+  "dataset_kind": "dummy-registry-v1",
+  "created_utc": "2026-10-13T04:24:20.458922+00:00",
+  "synthetic": true,
+  "children": 80137,
+  "vaccination_events": 112931,
+  "cohort": 2023,
+  "storage_hashes": {
+    "children.csv": "88105b7a2948eb6f09113e7d3e452041432de9c646d152fe360f4d3832973f04",
+    "children.tsv": "6202b9d00f7e2797fd80db6f675a43e267314db36eba1cb8ecb63cd3b729985f",
+    "vaccination_events.csv": "c94b2c1e0faa5dd9904215842b8b01254c53ded3d068e56072796195bb56c59d",
+    "metadata.json": "086fd3a87989866b2a2adbc63f2d34ff20870e25aa593f2058d83e1c05d51625"
+  },
+  "last_jobs": {
+    "mapreduce": "mapreduce-l1gaw49e",
+    "hive": "hive-jt75lgkt",
+    "pig": "pig-9_ezpbzl",
+    "hbase": "hbase-1dd7jrco"
+  },
+  "runtime": "Python byte blocks, logical DataNodes, metadata and replica reads"
+}

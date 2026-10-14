@@ -1,0 +1,16 @@
+{
+  "publisher": "WHO/UNICEF",
+  "dataset": "WUENIC DTP1/DTP3 via UNICEF GLOBAL_DATAFLOW",
+  "api_url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/.IM_DTP1+IM_DTP3.?format=sdmx-json&startPeriod=1980&endPeriod=2025",
+  "source_page": "https://data.unicef.org/resources/dataset/immunization/",
+  "retrieved_date_client": "2026-10-07",
+  "local_snapshot_saved_at_utc": "2026-10-06T17:15:08.172786+00:00",
+  "api_prepared_as_published": "2026-10-06T17:15:06",
+  "raw_sha256": "0a646a0be9d471d0a03e69327042fecabf134d00b1aa46bb3867e91788477df3",
+  "transformations": [
+    "Decode SDMX dimension/attribute indexes",
+    "Flatten observations to CSV/TSV; preserve names, values, units, status, revision, age",
+    "Filter IDN for country-level example; pair DTP1/DTP3 by year"
+  ],
+  "failed_excel_download": "HTTP 403; official documented SDMX API used successfully"
+}

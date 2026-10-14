@@ -1,0 +1,17 @@
+province,district,eligible_children,dose1_children,dose3_children,coverage_pct,dropout_pct,missed_dose3
+Jawa Tengah,Kabupaten Semarang,832,0,0,0.0,,832
+DI Yogyakarta,Kabupaten Sleman,832,81,11,1.32,86.42,821
+Kalimantan Barat,Kabupaten Kubu Raya,831,94,22,2.65,76.6,809
+Sumatera Barat,Kabupaten Agam,832,90,27,3.25,70.0,805
+Bali,Kabupaten Gianyar,838,572,256,30.55,55.24,582
+Sumatera Selatan,Kabupaten Ogan Komering Ilir,838,572,259,30.91,54.72,579
+Sulawesi Selatan,Kabupaten Maros,837,572,261,31.18,54.37,576
+Jawa Timur,Kabupaten Jember,838,573,273,32.58,52.36,565
+Jawa Barat,Kabupaten Bandung,832,747,419,50.36,43.91,413
+Banten,Kabupaten Tangerang,832,747,422,50.72,43.51,410
+Sumatera Utara,Kabupaten Deli Serdang,832,747,424,50.96,43.24,408
+Lampung,Kabupaten Lampung Selatan,832,747,427,51.32,42.84,405
+Sumatera Selatan,Kabupaten Banyuasin,832,654,503,60.46,23.09,329
+Sulawesi Selatan,Kabupaten Gowa,831,653,505,60.77,22.66,326
+Jawa Timur,Kabupaten Malang,832,654,517,62.14,20.95,315
+Bali,Kabupaten Badung,832,654,519,62.38,20.64,313

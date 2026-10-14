@@ -1,0 +1,1076 @@
+{
+  "built_utc": "2026-10-08T12:14:35.674148+00:00",
+  "source_snapshot": {
+    "publisher": "WHO/UNICEF",
+    "dataset": "WUENIC DTP1/DTP3 via UNICEF GLOBAL_DATAFLOW",
+    "api_url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/data/UNICEF,GLOBAL_DATAFLOW,1.0/.IM_DTP1+IM_DTP3.?format=sdmx-json&startPeriod=1980&endPeriod=2025",
+    "source_page": "https://data.unicef.org/resources/dataset/immunization/",
+    "retrieved_date_client": "2026-10-07",
+    "local_snapshot_saved_at_utc": "2026-10-06T17:15:08.172786+00:00",
+    "api_prepared_as_published": "2026-10-06T17:15:06",
+    "raw_sha256": "0a646a0be9d471d0a03e69327042fecabf134d00b1aa46bb3867e91788477df3",
+    "transformations": [
+      "Decode SDMX dimension/attribute indexes",
+      "Flatten observations to CSV/TSV; preserve names, values, units, status, revision, age",
+      "Filter IDN for country-level example; pair DTP1/DTP3 by year"
+    ],
+    "failed_excel_download": "HTTP 403; official documented SDMX API used successfully"
+  },
+  "countries": {
+    "IDN": "Indonesia",
+    "MYS": "Malaysia",
+    "THA": "Thailand",
+    "VNM": "Viet Nam",
+    "PHL": "Philippines"
+  },
+  "years": [
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "source_input_rows": 20032,
+  "storage_runtime": "Windows filesystem copy; no HDFS",
+  "sql_runtime": "SQLite; five statements in native/demo/hive_walkthrough.sql",
+  "sql_results": [
+    {
+      "sql": "SELECT COUNT(*) AS observation_rows\nFROM real_coverage_long",
+      "columns": [
+        "observation_rows"
+      ],
+      "rows": [
+        [
+          20032
+        ]
+      ]
+    },
+    {
+      "sql": "SELECT area_code, area_name, year, indicator, coverage_pct\nFROM real_coverage_long\nWHERE area_code IN ('IDN','MYS','THA','VNM','PHL') AND year = 2025 AND sex = '_T'\n      AND unit = 'PCNT' AND observation_status = 'E'\nORDER BY area_code, indicator",
+      "columns": [
+        "area_code",
+        "area_name",
+        "year",
+        "indicator",
+        "coverage_pct"
+      ],
+      "rows": [
+        [
+          "IDN",
+          "Indonesia",
+          2025,
+          "IM_DTP1",
+          85.0
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2025,
+          "IM_DTP3",
+          82.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2025,
+          "IM_DTP1",
+          95.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2025,
+          "IM_DTP3",
+          95.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2025,
+          "IM_DTP1",
+          79.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2025,
+          "IM_DTP3",
+          71.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2025,
+          "IM_DTP1",
+          96.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2025,
+          "IM_DTP3",
+          92.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2025,
+          "IM_DTP1",
+          99.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2025,
+          "IM_DTP3",
+          97.0
+        ]
+      ]
+    },
+    {
+      "sql": "SELECT area_code, area_name, source_revision, age_group,\n       SUM(coverage_pct) AS sum_of_year_percentages,\n       COUNT(*) AS year_count, ROUND(AVG(coverage_pct),2) AS mean_yearly_dtp3_pct\nFROM real_coverage_long\nWHERE area_code IN ('IDN','MYS','THA','VNM','PHL')\n      AND indicator = 'IM_DTP3' AND sex = '_T' AND unit = 'PCNT'\n      AND observation_status = 'E' AND year BETWEEN 2020 AND 2025\nGROUP BY area_code, area_name, source_revision, age_group\nORDER BY area_code",
+      "columns": [
+        "area_code",
+        "area_name",
+        "source_revision",
+        "age_group",
+        "sum_of_year_percentages",
+        "year_count",
+        "mean_yearly_dtp3_pct"
+      ],
+      "rows": [
+        [
+          "IDN",
+          "Indonesia",
+          "WHO/UNICEF estimates of national immunization coverage, 2025 revision",
+          "M12T23",
+          478.0,
+          6,
+          79.67
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          "WHO/UNICEF estimates of national immunization coverage, 2025 revision",
+          "M12T23",
+          573.0,
+          6,
+          95.5
+        ],
+        [
+          "PHL",
+          "Philippines",
+          "WHO/UNICEF estimates of national immunization coverage, 2025 revision",
+          "M12T23",
+          467.0,
+          6,
+          77.83
+        ],
+        [
+          "THA",
+          "Thailand",
+          "WHO/UNICEF estimates of national immunization coverage, 2025 revision",
+          "M12T23",
+          557.0,
+          6,
+          92.83
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          "WHO/UNICEF estimates of national immunization coverage, 2025 revision",
+          "M12T23",
+          527.0,
+          6,
+          87.83
+        ]
+      ]
+    },
+    {
+      "sql": "SELECT area_code, area_name, year, coverage_pct AS dtp3_pct\nFROM real_coverage_long\nWHERE area_code IN ('IDN','MYS','THA','VNM','PHL') AND indicator = 'IM_DTP3' AND sex = '_T'\n      AND unit = 'PCNT' AND observation_status = 'E'\n      AND year BETWEEN 2020 AND 2025\nORDER BY year, area_code",
+      "columns": [
+        "area_code",
+        "area_name",
+        "year",
+        "dtp3_pct"
+      ],
+      "rows": [
+        [
+          "IDN",
+          "Indonesia",
+          2020,
+          77.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2020,
+          98.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2020,
+          83.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2020,
+          97.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2020,
+          94.0
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2021,
+          67.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2021,
+          95.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2021,
+          69.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2021,
+          92.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2021,
+          83.0
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2022,
+          91.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2022,
+          97.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2022,
+          84.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2022,
+          92.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2022,
+          91.0
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2023,
+          83.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2023,
+          95.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2023,
+          89.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2023,
+          92.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2023,
+          65.0
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2024,
+          78.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2024,
+          93.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2024,
+          71.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2024,
+          92.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2024,
+          97.0
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2025,
+          82.0
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2025,
+          95.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2025,
+          71.0
+        ],
+        [
+          "THA",
+          "Thailand",
+          2025,
+          92.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2025,
+          97.0
+        ]
+      ]
+    },
+    {
+      "sql": "WITH paired AS (\n    SELECT area_code, area_name, year, source_revision, age_group,\n           MAX(CASE WHEN indicator = 'IM_DTP1' THEN coverage_pct END) AS dtp1_pct,\n           MAX(CASE WHEN indicator = 'IM_DTP3' THEN coverage_pct END) AS dtp3_pct\n    FROM real_coverage_long\n    WHERE area_code IN ('IDN','MYS','THA','VNM','PHL') AND sex = '_T' AND unit = 'PCNT'\n          AND observation_status = 'E'\n          AND year BETWEEN 2020 AND 2025\n          AND indicator IN ('IM_DTP1', 'IM_DTP3')\n    GROUP BY area_code, area_name, year, source_revision, age_group\n)\nSELECT area_code, area_name, year, dtp1_pct, dtp3_pct,\n       ROUND(dtp1_pct - dtp3_pct, 2) AS gap_percentage_points,\n       CASE WHEN dtp1_pct > 0 AND dtp3_pct <= dtp1_pct\n            THEN ROUND(100.0 * (dtp1_pct - dtp3_pct) / NULLIF(dtp1_pct, 0), 2)\n            ELSE NULL END AS dropout_proxy_pct\nFROM paired\nWHERE dtp1_pct IS NOT NULL AND dtp3_pct IS NOT NULL\nORDER BY year, area_code",
+      "columns": [
+        "area_code",
+        "area_name",
+        "year",
+        "dtp1_pct",
+        "dtp3_pct",
+        "gap_percentage_points",
+        "dropout_proxy_pct"
+      ],
+      "rows": [
+        [
+          "IDN",
+          "Indonesia",
+          2020,
+          83.0,
+          77.0,
+          6.0,
+          7.23
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2020,
+          98.0,
+          98.0,
+          0.0,
+          0.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2020,
+          87.0,
+          83.0,
+          4.0,
+          4.6
+        ],
+        [
+          "THA",
+          "Thailand",
+          2020,
+          97.0,
+          97.0,
+          0.0,
+          0.0
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2020,
+          96.0,
+          94.0,
+          2.0,
+          2.08
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2021,
+          74.0,
+          67.0,
+          7.0,
+          9.46
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2021,
+          95.0,
+          95.0,
+          0.0,
+          0.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2021,
+          70.0,
+          69.0,
+          1.0,
+          1.43
+        ],
+        [
+          "THA",
+          "Thailand",
+          2021,
+          96.0,
+          92.0,
+          4.0,
+          4.17
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2021,
+          87.0,
+          83.0,
+          4.0,
+          4.6
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2022,
+          92.0,
+          91.0,
+          1.0,
+          1.09
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2022,
+          97.0,
+          97.0,
+          0.0,
+          0.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2022,
+          87.0,
+          84.0,
+          3.0,
+          3.45
+        ],
+        [
+          "THA",
+          "Thailand",
+          2022,
+          96.0,
+          92.0,
+          4.0,
+          4.17
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2022,
+          92.0,
+          91.0,
+          1.0,
+          1.09
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2023,
+          85.0,
+          83.0,
+          2.0,
+          2.35
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2023,
+          95.0,
+          95.0,
+          0.0,
+          0.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2023,
+          91.0,
+          89.0,
+          2.0,
+          2.2
+        ],
+        [
+          "THA",
+          "Thailand",
+          2023,
+          96.0,
+          92.0,
+          4.0,
+          4.17
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2023,
+          80.0,
+          65.0,
+          15.0,
+          18.75
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2024,
+          83.0,
+          78.0,
+          5.0,
+          6.02
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2024,
+          93.0,
+          93.0,
+          0.0,
+          0.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2024,
+          82.0,
+          71.0,
+          11.0,
+          13.41
+        ],
+        [
+          "THA",
+          "Thailand",
+          2024,
+          96.0,
+          92.0,
+          4.0,
+          4.17
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2024,
+          99.0,
+          97.0,
+          2.0,
+          2.02
+        ],
+        [
+          "IDN",
+          "Indonesia",
+          2025,
+          85.0,
+          82.0,
+          3.0,
+          3.53
+        ],
+        [
+          "MYS",
+          "Malaysia",
+          2025,
+          95.0,
+          95.0,
+          0.0,
+          0.0
+        ],
+        [
+          "PHL",
+          "Philippines",
+          2025,
+          79.0,
+          71.0,
+          8.0,
+          10.13
+        ],
+        [
+          "THA",
+          "Thailand",
+          2025,
+          96.0,
+          92.0,
+          4.0,
+          4.17
+        ],
+        [
+          "VNM",
+          "Viet Nam",
+          2025,
+          99.0,
+          97.0,
+          2.0,
+          2.02
+        ]
+      ]
+    }
+  ],
+  "filter_group_runtime": "Python; prepared Pig predicate",
+  "filtered_rows": 60,
+  "grouped_rows": [
+    [
+      "IDN",
+      2020,
+      2
+    ],
+    [
+      "IDN",
+      2021,
+      2
+    ],
+    [
+      "IDN",
+      2022,
+      2
+    ],
+    [
+      "IDN",
+      2023,
+      2
+    ],
+    [
+      "IDN",
+      2024,
+      2
+    ],
+    [
+      "IDN",
+      2025,
+      2
+    ],
+    [
+      "MYS",
+      2020,
+      2
+    ],
+    [
+      "MYS",
+      2021,
+      2
+    ],
+    [
+      "MYS",
+      2022,
+      2
+    ],
+    [
+      "MYS",
+      2023,
+      2
+    ],
+    [
+      "MYS",
+      2024,
+      2
+    ],
+    [
+      "MYS",
+      2025,
+      2
+    ],
+    [
+      "PHL",
+      2020,
+      2
+    ],
+    [
+      "PHL",
+      2021,
+      2
+    ],
+    [
+      "PHL",
+      2022,
+      2
+    ],
+    [
+      "PHL",
+      2023,
+      2
+    ],
+    [
+      "PHL",
+      2024,
+      2
+    ],
+    [
+      "PHL",
+      2025,
+      2
+    ],
+    [
+      "THA",
+      2020,
+      2
+    ],
+    [
+      "THA",
+      2021,
+      2
+    ],
+    [
+      "THA",
+      2022,
+      2
+    ],
+    [
+      "THA",
+      2023,
+      2
+    ],
+    [
+      "THA",
+      2024,
+      2
+    ],
+    [
+      "THA",
+      2025,
+      2
+    ],
+    [
+      "VNM",
+      2020,
+      2
+    ],
+    [
+      "VNM",
+      2021,
+      2
+    ],
+    [
+      "VNM",
+      2022,
+      2
+    ],
+    [
+      "VNM",
+      2023,
+      2
+    ],
+    [
+      "VNM",
+      2024,
+      2
+    ],
+    [
+      "VNM",
+      2025,
+      2
+    ]
+  ],
+  "immunization_mapreduce": {
+    "runtime": "Two local Python mapper subprocesses; local sort; Python reducer",
+    "built_utc": "2026-10-08T12:14:35.637648+00:00",
+    "native_yarn": "NOT RUN",
+    "source": "WHO/UNICEF WUENIC project snapshot, 2025 revision",
+    "metric": "Unweighted arithmetic mean of annual DTP3 estimates per country, 2020-2025",
+    "countries": {
+      "IDN": "Indonesia",
+      "MYS": "Malaysia",
+      "THA": "Thailand",
+      "VNM": "Viet Nam",
+      "PHL": "Philippines"
+    },
+    "source_input_rows": 20032,
+    "selected_rows": 30,
+    "mapper_input_rows": [
+      10016,
+      10016
+    ],
+    "mapper_output_rows": [
+      15,
+      15
+    ],
+    "input": [
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "year": 2020,
+        "coverage_pct": 77.0
+      },
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "year": 2021,
+        "coverage_pct": 67.0
+      },
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "year": 2022,
+        "coverage_pct": 91.0
+      },
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "year": 2023,
+        "coverage_pct": 83.0
+      },
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "year": 2024,
+        "coverage_pct": 78.0
+      },
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "year": 2025,
+        "coverage_pct": 82.0
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "year": 2020,
+        "coverage_pct": 98.0
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "year": 2021,
+        "coverage_pct": 95.0
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "year": 2022,
+        "coverage_pct": 97.0
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "year": 2023,
+        "coverage_pct": 95.0
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "year": 2024,
+        "coverage_pct": 93.0
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "year": 2025,
+        "coverage_pct": 95.0
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "year": 2020,
+        "coverage_pct": 83.0
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "year": 2021,
+        "coverage_pct": 69.0
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "year": 2022,
+        "coverage_pct": 84.0
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "year": 2023,
+        "coverage_pct": 89.0
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "year": 2024,
+        "coverage_pct": 71.0
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "year": 2025,
+        "coverage_pct": 71.0
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "year": 2020,
+        "coverage_pct": 97.0
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "year": 2021,
+        "coverage_pct": 92.0
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "year": 2022,
+        "coverage_pct": 92.0
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "year": 2023,
+        "coverage_pct": 92.0
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "year": 2024,
+        "coverage_pct": 92.0
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "year": 2025,
+        "coverage_pct": 92.0
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "year": 2020,
+        "coverage_pct": 94.0
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "year": 2021,
+        "coverage_pct": 83.0
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "year": 2022,
+        "coverage_pct": 91.0
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "year": 2023,
+        "coverage_pct": 65.0
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "year": 2024,
+        "coverage_pct": 97.0
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "year": 2025,
+        "coverage_pct": 97.0
+      }
+    ],
+    "results": [
+      {
+        "area_code": "IDN",
+        "area_name": "Indonesia",
+        "key": "IDN|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+        "sum_of_year_percentages": "478.0",
+        "year_count": 6,
+        "mean_yearly_coverage_pct": "79.67"
+      },
+      {
+        "area_code": "MYS",
+        "area_name": "Malaysia",
+        "key": "MYS|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+        "sum_of_year_percentages": "573.0",
+        "year_count": 6,
+        "mean_yearly_coverage_pct": "95.50"
+      },
+      {
+        "area_code": "PHL",
+        "area_name": "Philippines",
+        "key": "PHL|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+        "sum_of_year_percentages": "467.0",
+        "year_count": 6,
+        "mean_yearly_coverage_pct": "77.83"
+      },
+      {
+        "area_code": "THA",
+        "area_name": "Thailand",
+        "key": "THA|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+        "sum_of_year_percentages": "557.0",
+        "year_count": 6,
+        "mean_yearly_coverage_pct": "92.83"
+      },
+      {
+        "area_code": "VNM",
+        "area_name": "Viet Nam",
+        "key": "VNM|IM_DTP3|_T|PCNT|E|WHO/UNICEF estimates of national immunization coverage, 2025 revision|M12T23",
+        "sum_of_year_percentages": "527.0",
+        "year_count": 6,
+        "mean_yearly_coverage_pct": "87.83"
+      }
+    ],
+    "interpretation": "Not pooled population coverage or a global mean; no infant population weights."
+  },
+  "wordcount_runtime": "Python subprocesses and local sort",
+  "native_execution": {
+    "HDFS": "NOT RUN",
+    "YARN": "NOT RUN",
+    "Hive": "NOT RUN",
+    "Pig": "NOT RUN"
+  }
+}

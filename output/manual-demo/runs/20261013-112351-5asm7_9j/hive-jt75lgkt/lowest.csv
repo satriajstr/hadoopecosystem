@@ -1,0 +1,6 @@
+province,district,eligible_children,dose1_children,dose3_children,dropout_children,missed_dose3,never_started_dose1,coverage_pct,dropout_pct
+Kalimantan Barat,Kabupaten Sambas,837,828,775,53,62,9,92.59,6.4
+Sumatera Barat,Kabupaten Tanah Datar,838,829,773,56,65,9,92.24,6.76
+DI Yogyakarta,Kabupaten Bantul,838,829,771,58,67,9,92.0,7.0
+Jawa Tengah,Kabupaten Banyumas,838,829,768,61,70,9,91.65,7.36
+Lampung,Kabupaten Lampung Tengah,837,749,684,65,153,88,81.72,8.68

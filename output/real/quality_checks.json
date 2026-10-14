@@ -1,0 +1,92 @@
+{
+  "rows": 20032,
+  "area_or_group_count": 296,
+  "year_min": 1980,
+  "year_max": 2025,
+  "duplicate_keys": 0,
+  "invalid_coverage_values": 0,
+  "missing_coverage_values": 0,
+  "missing_by_column": {
+    "area_code": 0,
+    "area_name": 0,
+    "indicator": 0,
+    "sex": 0,
+    "year": 0,
+    "coverage_pct": 0,
+    "unit": 0,
+    "observation_status": 0,
+    "source_revision": 0,
+    "age_group": 0
+  },
+  "incomplete_dtp_pairs": 2,
+  "dtp3_greater_than_dtp1_pairs": 6,
+  "incomplete_pair_keys": [
+    {
+      "area_code": "AFG",
+      "sex": "_T",
+      "year": 1981
+    },
+    {
+      "area_code": "LBN",
+      "sex": "_T",
+      "year": 1980
+    }
+  ],
+  "dtp3_greater_than_dtp1_details": [
+    {
+      "area_code": "AZE",
+      "sex": "_T",
+      "year": 1993,
+      "dtp1_pct": 65.0,
+      "dtp3_pct": 66.0
+    },
+    {
+      "area_code": "BRA",
+      "sex": "_T",
+      "year": 1994,
+      "dtp1_pct": 50.0,
+      "dtp3_pct": 74.0
+    },
+    {
+      "area_code": "BRA",
+      "sex": "_T",
+      "year": 1996,
+      "dtp1_pct": 75.0,
+      "dtp3_pct": 77.0
+    },
+    {
+      "area_code": "MAR",
+      "sex": "_T",
+      "year": 1996,
+      "dtp1_pct": 91.0,
+      "dtp3_pct": 95.0
+    },
+    {
+      "area_code": "MYS",
+      "sex": "_T",
+      "year": 1992,
+      "dtp1_pct": 92.0,
+      "dtp3_pct": 94.0
+    },
+    {
+      "area_code": "SGP",
+      "sex": "_T",
+      "year": 1996,
+      "dtp1_pct": 94.0,
+      "dtp3_pct": 97.0
+    }
+  ],
+  "observation_statuses": [
+    "E"
+  ],
+  "source_revisions": [
+    "WHO/UNICEF estimates of national immunization coverage, 2025 revision"
+  ],
+  "age_groups_as_published": [
+    "M12T23"
+  ],
+  "caveat": "REF_AREA mencakup negara dan kelompok agregat; jangan menjumlahkan persentase atau menyebut semua wilayah sebagai negara.",
+  "indonesia_long_rows": 90,
+  "indonesia_result_years": 45,
+  "raw_sha256": "0a646a0be9d471d0a03e69327042fecabf134d00b1aa46bb3867e91788477df3"
+}

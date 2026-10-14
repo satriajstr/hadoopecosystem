@@ -1,0 +1,48 @@
+{
+  "runtime": "Python + SQLite lokal; bukan Hadoop/Hive/Pig/HBase",
+  "source_rows": 21,
+  "cohort_rows": 18,
+  "missed_count": 11,
+  "coverage": [
+    {
+      "province": "Provinsi_B",
+      "district": "Selatan",
+      "eligible_children": 6,
+      "dose1_children": 0,
+      "dose3_children": 0,
+      "coverage_pct": 0.0,
+      "dropout_pct": null,
+      "missed_dose3": 6
+    },
+    {
+      "province": "Provinsi_A",
+      "district": "Utara",
+      "eligible_children": 6,
+      "dose1_children": 5,
+      "dose3_children": 3,
+      "coverage_pct": 50.0,
+      "dropout_pct": 40.0,
+      "missed_dose3": 3
+    },
+    {
+      "province": "Provinsi_A",
+      "district": "Tengah",
+      "eligible_children": 6,
+      "dose1_children": 4,
+      "dose3_children": 4,
+      "coverage_pct": 66.67,
+      "dropout_pct": 0.0,
+      "missed_dose3": 2
+    }
+  ],
+  "lookup_id": "A004",
+  "lookup": {
+    "child_id": "A004",
+    "province": "Provinsi_A",
+    "district": "Utara",
+    "birth_year": 2023,
+    "dose3_due": 1,
+    "dose1": 1,
+    "dose3": 0
+  }
+}

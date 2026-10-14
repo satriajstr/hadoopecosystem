@@ -1,0 +1,10 @@
+row_key,family,qualifier,value
+D010000,profile,province,Jawa Tengah
+D010000,profile,district,Kabupaten Semarang
+D010000,profile,birth_date,2025-01-03
+D010000,profile,birth_year,2025
+D010000,profile,dose3_due,0
+D010000,profile,dose1,0
+D010000,profile,dose2,0
+D010000,profile,dose3,0
+D010000,profile,last_updated,2026-10-01

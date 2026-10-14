@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "items": [
+    {
+      "id": "dataset-nyata",
+      "title": "Dataset nyata dan kecocokan dengan studi kasus",
+      "queries": [
+        {
+          "id": "dataset-profile",
+          "source": {
+            "label": "WHO/UNICEF WUENIC — API UNICEF",
+            "files": [
+              {
+                "label": "unicef_dtp1_dtp3_1980_2025.json"
+              },
+              {
+                "label": "quality_checks.json"
+              }
+            ],
+            "metricDefinitions": [
+              {
+                "label": "Grain dataset",
+                "definition": "Satu observasi adalah estimasi cakupan wilayah atau kelompok, indikator DTP, jenis kelamin, dan tahun."
+              }
+            ],
+            "filters": [
+              "Indikator: IM_DTP1 dan IM_DTP3",
+              "Periode unduhan: 1980–2025"
+            ],
+            "caveats": [
+              "296 wilayah mencakup negara serta kelompok agregat; bukan 296 negara.",
+              "Dataset tidak memuat identitas anak atau kabupaten.",
+              "Pada seluruh wilayah ditemukan 2 pasangan tidak lengkap dan 6 pasangan DTP3 > DTP1; angka sumber dipertahankan."
+            ],
+            "evidenceFlow": [
+              {
+                "kind": "source",
+                "showInReceipt": false,
+                "title": "Sumber resmi",
+                "detail": "Respons berhasil diunduh dari endpoint SDMX publik yang didokumentasikan UNICEF; snapshot asli dan SHA-256 disimpan."
+              }
+            ]
+          },
+          "columns": [
+            "rows",
+            "area_or_group_count",
+            "duplicate_keys",
+            "missing_coverage_values",
+            "invalid_coverage_values",
+            "incomplete_dtp_pairs",
+            "dtp3_greater_than_dtp1_pairs"
+          ],
+          "rows": [
+            {
+              "rows": 20032,
+              "area_or_group_count": 296,
+              "duplicate_keys": 0,
+              "missing_coverage_values": 0,
+              "invalid_coverage_values": 0,
+              "incomplete_dtp_pairs": 2,
+              "dtp3_greater_than_dtp1_pairs": 6
+            }
+          ],
+          "reportingPeriod": "1980–2025; WUENIC 2025 revision"
+        }
+      ]
+    },
+    {
+      "id": "indonesia-coverage",
+      "title": "Contoh cakupan dan proxy dropout Indonesia",
+      "queries": [
+        {
+          "id": "indonesia-sql",
+          "source": {
+            "label": "WHO/UNICEF WUENIC — Indonesia",
+            "files": [
+              {
+                "label": "indonesia_dtp_long.csv"
+              },
+              {
+                "label": "indonesia_coverage_dropout.csv"
+              }
+            ],
+            "sql": "-- Grain input: wilayah/kelompok x indikator x sex x tahun.\n-- Fokus IDN menghindari pencampuran negara dengan agregat regional.\nWITH paired AS (\n    SELECT area_code, area_name, year, source_revision, age_group,\n           MAX(CASE WHEN indicator = 'IM_DTP1' THEN coverage_pct END) AS dtp1_pct,\n           MAX(CASE WHEN indicator = 'IM_DTP3' THEN coverage_pct END) AS dtp3_pct\n    FROM real_coverage_long\n    WHERE area_code = 'IDN' AND sex = '_T' AND unit = 'PCNT'\n          AND observation_status = 'E'\n          AND indicator IN ('IM_DTP1', 'IM_DTP3')\n    GROUP BY area_code, area_name, year, source_revision, age_group\n)\nSELECT area_code, area_name, year, dtp1_pct, dtp3_pct,\n       ROUND(dtp1_pct - dtp3_pct, 2) AS gap_percentage_points,\n       CASE WHEN dtp1_pct > 0 AND dtp3_pct <= dtp1_pct\n            THEN ROUND(100.0 * (dtp1_pct - dtp3_pct)\n                       / NULLIF(dtp1_pct, 0), 2)\n            ELSE NULL END AS dropout_proxy_pct,\n       source_revision\nFROM paired\nWHERE dtp1_pct IS NOT NULL AND dtp3_pct IS NOT NULL\nORDER BY year;\n",
+            "metricDefinitions": [
+              {
+                "label": "Cakupan",
+                "definition": "DTP1 dan DTP3 adalah estimasi persentase cakupan dosis pertama dan ketiga yang diterbitkan WHO/UNICEF."
+              },
+              {
+                "label": "Proxy dropout",
+                "definition": "Proxy dropout agregat dihitung dari selisih cakupan DTP1 dan DTP3, dibagi cakupan DTP1, lalu dikalikan 100."
+              }
+            ],
+            "caveats": [
+              "Perhitungan agregat tidak mengikuti anak yang sama dan tidak menentukan identitas anak yang melewatkan dosis.",
+              "SQL dieksekusi pada SQLite lokal; eksekusi Hive/Hadoop belum diuji.",
+              "AGE M12T23 dipertahankan sesuai metadata API; tidak merekonstruksi kohort kelahiran individu."
+            ]
+          },
+          "columns": [
+            {
+              "field": "year",
+              "label": "Tahun"
+            },
+            {
+              "field": "dtp1_pct",
+              "label": "DTP1 (%)"
+            },
+            {
+              "field": "dtp3_pct",
+              "label": "DTP3 (%)"
+            },
+            {
+              "field": "dropout_proxy_pct",
+              "label": "Proxy dropout (%)"
+            }
+          ],
+          "rows": [
+            {
+              "year": 2023,
+              "dtp1_pct": 85.0,
+              "dtp3_pct": 83.0,
+              "dropout_proxy_pct": 2.35
+            },
+            {
+              "year": 2024,
+              "dtp1_pct": 83.0,
+              "dtp3_pct": 78.0,
+              "dropout_proxy_pct": 6.02
+            },
+            {
+              "year": 2025,
+              "dtp1_pct": 85.0,
+              "dtp3_pct": 82.0,
+              "dropout_proxy_pct": 3.53
+            }
+          ],
+          "preview": {
+            "kind": "partial",
+            "note": "Tiga tahun terakhir dari 45 tahun berpasangan Indonesia.",
+            "totalRows": 45
+          },
+          "reportingPeriod": "Indonesia 1981–2025; preview 2023–2025",
+          "methods": [
+            {
+              "language": "calculation",
+              "code": "Indonesia 2025: gap = 85 - 82 = 3 poin persentase\nProxy dropout = (85 - 82) / 85 * 100 = 3,5294...%, dibulatkan 3,53%"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+hadoop hive hadoop
+hive pig hadoop
+yarn hdfs hive

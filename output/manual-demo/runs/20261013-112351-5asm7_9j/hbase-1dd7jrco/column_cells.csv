@@ -1,0 +1,13 @@
+row_key,family,qualifier,value
+D000001,profile,province,Jawa Barat
+D000001,profile,district,Kabupaten Bandung
+D000001,profile,birth_date,2023-01-01
+D000001,profile,birth_year,2023
+D000001,profile,dose3_due,1
+D000001,profile,dose1,1
+D000001,profile,dose2,1
+D000001,profile,dose3,1
+D000001,profile,last_updated,2026-10-01
+D000001,history,DTP1,2023-06-01|FAC01
+D000001,history,DTP2,2023-07-01|FAC01
+D000001,history,DTP3,2023-08-01|FAC01

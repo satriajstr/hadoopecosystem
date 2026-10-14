@@ -1,0 +1,90 @@
+<!doctype html><html lang="id"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Modul 4 | Demo Hadoop Ecosystem</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f3f5f8;color:#182c3b;font:17px/1.65 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:44px 28px}h1{font-size:clamp(30px,5vw,52px);line-height:1.1;margin:12px 0 20px}h2{margin-top:42px}.tag{color:#14796f;font-weight:700;letter-spacing:2px;font-size:13px}.notice{background:#fff2d3;padding:16px 22px;border-left:4px solid #bb861f;border-radius:8px}.flow{display:flex;gap:12px;flex-wrap:wrap;margin:24px 0}.flow span{padding:12px 18px;background:#163e50;color:white;border-radius:10px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}article{background:white;border:1px solid #dee5e9;border-radius:16px;padding:24px}article span{font-size:13px;color:#687b87}article h3{margin:8px 0}article b{font-size:42px;color:#14796f}article p{font-size:15px}.bar{height:9px;background:#e7eef1;border-radius:5px;overflow:hidden}.bar i{display:block;height:100%;background:#14796f}pre{padding:22px;border-radius:12px;background:#122c3b;color:#e4f2f5;overflow-x:auto;font:14px/1.7 Consolas,monospace}summary{cursor:pointer;font-weight:600;padding:12px 0}details{border-bottom:1px solid #dbe3e9}.small{font-size:14px;color:#586f7b}a{color:#0b7168}@media print{body{background:white}main{padding:0}details{break-inside:avoid}}
+</style><main><div class="tag">BIG DATA / MODULE 04</div><h1>Bagaimana ekosistem Hadoop<br>mengolah data imunisasi?</h1>
+<p>HDFS menyimpan data, YARN mengatur sumber daya, dan mesin pemrosesan mengubah data menjadi informasi.</p>
+<div class="notice"><strong>Studi kasus: registri imunisasi sintetis.</strong> Ikuti alur penyimpanan, map–shuffle–reduce, analisis SQL, ETL, dan lookup individual.</div>
+<div class="flow"><span>Ingestion: Sqoop / Flume</span><span>Penyimpanan: HDFS</span><span>ETL: Pig</span><span>Analisis: Hive</span><span>Lookup: HBase</span></div>
+<p class="small">YARN mengelola job pemrosesan yang berjalan di atasnya. Oozie mengatur urutan workflow. Jalur di atas adalah contoh integrasi, bukan ketergantungan wajib semua tool.</p>
+<h2>01 / Word Count</h2><p>Input → map (kata, 1) → shuffle &amp; sort → reduce (jumlah per kata).</p><pre>hadoop	3
+hdfs	1
+hive	3
+pig	1
+yarn	1
+</pre>
+<h2>02 / Registri imunisasi</h2><p>21 baris awal → 18 anak kohort 2023 yang sudah eligible → 11 anak belum menerima dosis 3.</p><div class="grid"><article><span>Provinsi_B</span><h3>Selatan</h3><b>0.00%</b><p>Cakupan dosis 3: 0/6 anak</p><div class="bar"><i style="width:0.0%"></i></div><p>Dropout: N/A (D1 = 0)</p></article><article><span>Provinsi_A</span><h3>Utara</h3><b>50.00%</b><p>Cakupan dosis 3: 3/6 anak</p><div class="bar"><i style="width:50.0%"></i></div><p>Dropout: 40.0%</p></article><article><span>Provinsi_A</span><h3>Tengah</h3><b>66.67%</b><p>Cakupan dosis 3: 4/6 anak</p><div class="bar"><i style="width:66.67%"></i></div><p>Dropout: 0.0%</p></article></div>
+<p><strong>Interpretasi:</strong> Selatan mempunyai cakupan terendah. Utara juga memperlihatkan kehilangan kelanjutan dosis. Tengah memiliki dropout 0%, tetapi masih ada anak yang belum memulai dosis pertama.</p>
+<p class="small">Cakupan = D3 / seluruh anak eligible × 100%. Dropout = (D1 − D3) / D1 × 100%. N/A berarti denominator nol, bukan dropout 0%. Angka menggambarkan dataset contoh, bukan estimasi populasi wilayah.</p>
+<h2>03 / Lookup per anak</h2><pre>{
+  &quot;child_id&quot;: &quot;A004&quot;,
+  &quot;province&quot;: &quot;Provinsi_A&quot;,
+  &quot;district&quot;: &quot;Utara&quot;,
+  &quot;birth_year&quot;: 2023,
+  &quot;dose3_due&quot;: 1,
+  &quot;dose1&quot;: 1,
+  &quot;dose3&quot;: 0
+}</pre><p class="small">Lookup lokal memakai dictionary. File HBase Shell memperlihatkan column family dan contoh row key A004.</p>
+<h2>04 / Kode yang dijelaskan saat demo</h2><details><summary>code/mapper.py</summary><pre>#!/usr/bin/env python3
+&quot;&quot;&quot;Hadoop Streaming: satu pasangan (kata, 1) untuk setiap token.&quot;&quot;&quot;
+import sys
+
+for line in sys.stdin:
+    # Sama dengan modul: token dipisahkan whitespace, case-sensitive.
+    for word in line.strip().split():
+        print(f&quot;{word}\t1&quot;)
+</pre></details><details><summary>code/reducer.py</summary><pre>#!/usr/bin/env python3
+&quot;&quot;&quot;Input harus sudah dikelompokkan/diurutkan berdasarkan key oleh shuffle.&quot;&quot;&quot;
+import sys
+
+current_word = None
+total = 0
+for line in sys.stdin:
+    if not line.strip():
+        continue
+    word, count = line.rstrip(&quot;\n&quot;).split(&quot;\t&quot;, 1)
+    if current_word is not None and word != current_word:
+        print(f&quot;{current_word}\t{total}&quot;)
+        total = 0
+    current_word = word
+    total += int(count)
+
+if current_word is not None:
+    print(f&quot;{current_word}\t{total}&quot;)
+</pre></details><details><summary>native/coverage.sql</summary><pre>-- Query yang sama dieksekusi oleh SQLite lokal dan disediakan untuk Hive.
+-- Satu baris = satu anak; hanya kohort 2023 yang sudah eligible dosis ketiga.
+WITH cohort AS (
+    SELECT * FROM vaccinations
+    WHERE birth_year = 2023 AND dose3_due = 1
+)
+SELECT province, district,
+       COUNT(*) AS eligible_children,
+       SUM(dose1) AS dose1_children,
+       SUM(dose3) AS dose3_children,
+       ROUND(100.0 * SUM(dose3) / COUNT(*), 2) AS coverage_pct,
+       ROUND(100.0 * (SUM(dose1) - SUM(dose3))
+             / NULLIF(SUM(dose1), 0), 2) AS dropout_pct,
+       SUM(CASE WHEN dose3 = 0 THEN 1 ELSE 0 END) AS missed_dose3
+FROM cohort
+GROUP BY province, district
+ORDER BY coverage_pct ASC, province ASC, district ASC;
+</pre></details><details><summary>native/etl_imunisasi.pig</summary><pre>-- Input CSV tanpa header. Parameter diisi dari folder HDFS run_hadoop.sh.
+-- Dataset demo sudah divalidasi (ID unik, flag 0/1, dose3 &lt;= dose1).
+raw = LOAD &#x27;$INPUT&#x27; USING PigStorage(&#x27;,&#x27;) AS (
+    child_id:chararray, province:chararray, district:chararray,
+    birth_year:int, dose3_due:int, dose1:int, dose3:int
+);
+cohort = FILTER raw BY birth_year == 2023 AND dose3_due == 1;
+missed = FILTER cohort BY dose3 == 0;
+result = FOREACH missed GENERATE child_id, province, district, dose1, dose3;
+STORE result INTO &#x27;$OUTPUT&#x27; USING PigStorage(&#x27;,&#x27;);
+</pre></details><details><summary>native/hbase_lookup.hbase</summary><pre># Contoh HBase Shell untuk satu anak sintetis. Jalankan sekali di tabel demo baru.
+create &#x27;modul4_demo_history&#x27;, &#x27;profile&#x27;, &#x27;vaccine&#x27;
+put &#x27;modul4_demo_history&#x27;, &#x27;A004&#x27;, &#x27;profile:district&#x27;, &#x27;Utara&#x27;
+put &#x27;modul4_demo_history&#x27;, &#x27;A004&#x27;, &#x27;profile:birth_year&#x27;, &#x27;2023&#x27;
+put &#x27;modul4_demo_history&#x27;, &#x27;A004&#x27;, &#x27;vaccine:dose1&#x27;, &#x27;1&#x27;
+put &#x27;modul4_demo_history&#x27;, &#x27;A004&#x27;, &#x27;vaccine:dose3&#x27;, &#x27;0&#x27;
+get &#x27;modul4_demo_history&#x27;, &#x27;A004&#x27;
+# Memasukkan satu contoh ini bukan sinkronisasi seluruh dataset ke HBase.
+</pre></details>
+<h2>Kesimpulan</h2><p>Hive mempermudah query agregasi, Pig menggambarkan aliran transformasi, dan HBase melayani lookup individual. Demo ini menemukan pola cakupan; prediksi wabah memerlukan data dan model tambahan.</p>
+<p class="small">Jalankan ulang: <code>python code/run_demo.py all</code>. Panduan narasi: <a href="../PANDUAN_PRESENTASI.md">PANDUAN_PRESENTASI.md</a>.</p></main></html>

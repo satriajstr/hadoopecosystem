@@ -1,0 +1,4 @@
+province,district,eligible_children,dose1_children,dose3_children,coverage_pct,dropout_pct,missed_dose3
+Provinsi_B,Selatan,6,0,0,0.0,,6
+Provinsi_A,Utara,6,5,3,50.0,40.0,3
+Provinsi_A,Tengah,6,4,4,66.67,0.0,2

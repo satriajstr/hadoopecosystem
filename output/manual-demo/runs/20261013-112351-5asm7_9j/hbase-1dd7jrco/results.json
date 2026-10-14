@@ -1,0 +1,117 @@
+{
+  "runtime": "Python dictionary keyed by child_id",
+  "synthetic": true,
+  "native_hbase": "NOT RUN",
+  "child_id": "D000001",
+  "found": true,
+  "profile": {
+    "child_id": "D000001",
+    "province": "Jawa Barat",
+    "district": "Kabupaten Bandung",
+    "birth_date": "2023-01-01",
+    "birth_year": 2023,
+    "dose3_due": 1,
+    "dose1": 1,
+    "dose2": 1,
+    "dose3": 1,
+    "last_updated": "2026-10-01"
+  },
+  "history": [
+    {
+      "child_id": "D000001",
+      "vaccine": "DTP",
+      "dose_number": 1,
+      "vaccination_date": "2023-06-01",
+      "facility_id": "FAC01"
+    },
+    {
+      "child_id": "D000001",
+      "vaccine": "DTP",
+      "dose_number": 2,
+      "vaccination_date": "2023-07-01",
+      "facility_id": "FAC01"
+    },
+    {
+      "child_id": "D000001",
+      "vaccine": "DTP",
+      "dose_number": 3,
+      "vaccination_date": "2023-08-01",
+      "facility_id": "FAC01"
+    }
+  ],
+  "missing_due_doses": [],
+  "cells": [
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "province",
+      "value": "Jawa Barat"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "district",
+      "value": "Kabupaten Bandung"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "birth_date",
+      "value": "2023-01-01"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "birth_year",
+      "value": "2023"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "dose3_due",
+      "value": "1"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "dose1",
+      "value": "1"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "dose2",
+      "value": "1"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "dose3",
+      "value": "1"
+    },
+    {
+      "row_key": "D000001",
+      "family": "profile",
+      "qualifier": "last_updated",
+      "value": "2026-10-01"
+    },
+    {
+      "row_key": "D000001",
+      "family": "history",
+      "qualifier": "DTP1",
+      "value": "2023-06-01|FAC01"
+    },
+    {
+      "row_key": "D000001",
+      "family": "history",
+      "qualifier": "DTP2",
+      "value": "2023-07-01|FAC01"
+    },
+    {
+      "row_key": "D000001",
+      "family": "history",
+      "qualifier": "DTP3",
+      "value": "2023-08-01|FAC01"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "verified_utc": "2026-10-12T10:56:35.595396+00:00",
+  "saved_html_links_resolve": {
+    "presentation": 15
+  },
+  "sections": 8,
+  "browser_rendering": "NOT RUN",
+  "dummy_profiles": 80137,
+  "dummy_events": 112931,
+  "eligible": 20035,
+  "missed_dose3": 9380,
+  "provinces": 12,
+  "districts": 24,
+  "hdfs_blocks": 962,
+  "replication": 2,
+  "failed_node": "DN1",
+  "re_replicated_blocks": 641,
+  "read_after_failure_matches_source": true,
+  "sql_mapreduce_match": true,
+  "yarn_parallel_containers": true,
+  "yarn_resource_queue_verified": true,
+  "resource_release_verified": true,
+  "column_families_verified": true,
+  "dummy_source_hashes_preserved": true,
+  "who_raw_snapshot_hash_preserved": true,
+  "manual_cli_session": "20261012-175331-ionxdp8d",
+  "manual_cli_stages": {
+    "mapreduce": "mapreduce-5j4yy1ro",
+    "hive": "hive-rj1b5cxb",
+    "pig": "pig-1s_c6krh",
+    "hbase": "hbase-d10lo_8w"
+  },
+  "unit_tests": {
+    "concept_models": 6,
+    "registry": 10,
+    "legacy": 4
+  },
+  "presentation_language": "Purpose, simple steps, explained command, expected result, narration and next step",
+  "native_execution": "NOT RUN"
+}

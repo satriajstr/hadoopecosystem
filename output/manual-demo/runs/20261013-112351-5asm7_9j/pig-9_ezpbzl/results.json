@@ -1,0 +1,13 @@
+{
+  "runtime": "Python filter/ETL",
+  "synthetic": true,
+  "cohort": 2023,
+  "source_rows": 80137,
+  "cohort_rows": 20035,
+  "missed_dose3": 9380,
+  "dropout_children": 3816,
+  "never_started_dose1": 5564,
+  "province": null,
+  "district": null,
+  "native_pig": "NOT RUN"
+}

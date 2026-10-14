@@ -1,0 +1,6 @@
+province,district,eligible_children,dose1_children,dose3_children,dropout_children,missed_dose3,never_started_dose1,coverage_pct,dropout_pct
+DI Yogyakarta,Kabupaten Sleman,832,81,11,70,821,751,1.32,86.42
+Kalimantan Barat,Kabupaten Kubu Raya,831,94,22,72,809,737,2.65,76.6
+Sumatera Barat,Kabupaten Agam,832,90,27,63,805,742,3.25,70.0
+Bali,Kabupaten Gianyar,838,572,256,316,582,266,30.55,55.24
+Sumatera Selatan,Kabupaten Ogan Komering Ilir,838,572,259,313,579,266,30.91,54.72

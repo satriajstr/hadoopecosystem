@@ -1,0 +1,877 @@
+{
+  "runtime": "Resource-model scheduling of two Python mapper subprocesses, local sort and Python reducer",
+  "synthetic": true,
+  "source_rows": 80137,
+  "cohort": 2023,
+  "mapper_input_rows": [
+    40069,
+    40068
+  ],
+  "mapper_output_rows": [
+    10015,
+    10020
+  ],
+  "selected_rows": 20035,
+  "results": [
+    {
+      "province": "Bali",
+      "district": "Kabupaten Badung",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 519,
+      "coverage_pct": 62.38,
+      "dropout_pct": 20.64,
+      "missed_dose3": 313
+    },
+    {
+      "province": "Bali",
+      "district": "Kabupaten Gianyar",
+      "eligible_children": 838,
+      "dose1_children": 572,
+      "dose3_children": 256,
+      "coverage_pct": 30.55,
+      "dropout_pct": 55.24,
+      "missed_dose3": 582
+    },
+    {
+      "province": "Banten",
+      "district": "Kabupaten Serang",
+      "eligible_children": 838,
+      "dose1_children": 750,
+      "dose3_children": 680,
+      "coverage_pct": 81.15,
+      "dropout_pct": 9.33,
+      "missed_dose3": 158
+    },
+    {
+      "province": "Banten",
+      "district": "Kabupaten Tangerang",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 422,
+      "coverage_pct": 50.72,
+      "dropout_pct": 43.51,
+      "missed_dose3": 410
+    },
+    {
+      "province": "DI Yogyakarta",
+      "district": "Kabupaten Bantul",
+      "eligible_children": 838,
+      "dose1_children": 829,
+      "dose3_children": 771,
+      "coverage_pct": 92.0,
+      "dropout_pct": 7.0,
+      "missed_dose3": 67
+    },
+    {
+      "province": "DI Yogyakarta",
+      "district": "Kabupaten Sleman",
+      "eligible_children": 832,
+      "dose1_children": 81,
+      "dose3_children": 11,
+      "coverage_pct": 1.32,
+      "dropout_pct": 86.42,
+      "missed_dose3": 821
+    },
+    {
+      "province": "Jawa Barat",
+      "district": "Kabupaten Bandung",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 419,
+      "coverage_pct": 50.36,
+      "dropout_pct": 43.91,
+      "missed_dose3": 413
+    },
+    {
+      "province": "Jawa Barat",
+      "district": "Kabupaten Bogor",
+      "eligible_children": 838,
+      "dose1_children": 750,
+      "dose3_children": 677,
+      "coverage_pct": 80.79,
+      "dropout_pct": 9.73,
+      "missed_dose3": 161
+    },
+    {
+      "province": "Jawa Tengah",
+      "district": "Kabupaten Banyumas",
+      "eligible_children": 838,
+      "dose1_children": 829,
+      "dose3_children": 768,
+      "coverage_pct": 91.65,
+      "dropout_pct": 7.36,
+      "missed_dose3": 70
+    },
+    {
+      "province": "Jawa Tengah",
+      "district": "Kabupaten Semarang",
+      "eligible_children": 832,
+      "dose1_children": 0,
+      "dose3_children": 0,
+      "coverage_pct": 0.0,
+      "dropout_pct": null,
+      "missed_dose3": 832
+    },
+    {
+      "province": "Jawa Timur",
+      "district": "Kabupaten Jember",
+      "eligible_children": 838,
+      "dose1_children": 573,
+      "dose3_children": 273,
+      "coverage_pct": 32.58,
+      "dropout_pct": 52.36,
+      "missed_dose3": 565
+    },
+    {
+      "province": "Jawa Timur",
+      "district": "Kabupaten Malang",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 517,
+      "coverage_pct": 62.14,
+      "dropout_pct": 20.95,
+      "missed_dose3": 315
+    },
+    {
+      "province": "Kalimantan Barat",
+      "district": "Kabupaten Kubu Raya",
+      "eligible_children": 831,
+      "dose1_children": 94,
+      "dose3_children": 22,
+      "coverage_pct": 2.65,
+      "dropout_pct": 76.6,
+      "missed_dose3": 809
+    },
+    {
+      "province": "Kalimantan Barat",
+      "district": "Kabupaten Sambas",
+      "eligible_children": 837,
+      "dose1_children": 828,
+      "dose3_children": 775,
+      "coverage_pct": 92.59,
+      "dropout_pct": 6.4,
+      "missed_dose3": 62
+    },
+    {
+      "province": "Lampung",
+      "district": "Kabupaten Lampung Selatan",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 427,
+      "coverage_pct": 51.32,
+      "dropout_pct": 42.84,
+      "missed_dose3": 405
+    },
+    {
+      "province": "Lampung",
+      "district": "Kabupaten Lampung Tengah",
+      "eligible_children": 837,
+      "dose1_children": 749,
+      "dose3_children": 684,
+      "coverage_pct": 81.72,
+      "dropout_pct": 8.68,
+      "missed_dose3": 153
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "district": "Kabupaten Gowa",
+      "eligible_children": 831,
+      "dose1_children": 653,
+      "dose3_children": 505,
+      "coverage_pct": 60.77,
+      "dropout_pct": 22.66,
+      "missed_dose3": 326
+    },
+    {
+      "province": "Sulawesi Selatan",
+      "district": "Kabupaten Maros",
+      "eligible_children": 837,
+      "dose1_children": 572,
+      "dose3_children": 261,
+      "coverage_pct": 31.18,
+      "dropout_pct": 54.37,
+      "missed_dose3": 576
+    },
+    {
+      "province": "Sumatera Barat",
+      "district": "Kabupaten Agam",
+      "eligible_children": 832,
+      "dose1_children": 90,
+      "dose3_children": 27,
+      "coverage_pct": 3.25,
+      "dropout_pct": 70.0,
+      "missed_dose3": 805
+    },
+    {
+      "province": "Sumatera Barat",
+      "district": "Kabupaten Tanah Datar",
+      "eligible_children": 838,
+      "dose1_children": 829,
+      "dose3_children": 773,
+      "coverage_pct": 92.24,
+      "dropout_pct": 6.76,
+      "missed_dose3": 65
+    },
+    {
+      "province": "Sumatera Selatan",
+      "district": "Kabupaten Banyuasin",
+      "eligible_children": 832,
+      "dose1_children": 654,
+      "dose3_children": 503,
+      "coverage_pct": 60.46,
+      "dropout_pct": 23.09,
+      "missed_dose3": 329
+    },
+    {
+      "province": "Sumatera Selatan",
+      "district": "Kabupaten Ogan Komering Ilir",
+      "eligible_children": 838,
+      "dose1_children": 572,
+      "dose3_children": 259,
+      "coverage_pct": 30.91,
+      "dropout_pct": 54.72,
+      "missed_dose3": 579
+    },
+    {
+      "province": "Sumatera Utara",
+      "district": "Kabupaten Deli Serdang",
+      "eligible_children": 832,
+      "dose1_children": 747,
+      "dose3_children": 424,
+      "coverage_pct": 50.96,
+      "dropout_pct": 43.24,
+      "missed_dose3": 408
+    },
+    {
+      "province": "Sumatera Utara",
+      "district": "Kabupaten Langkat",
+      "eligible_children": 838,
+      "dose1_children": 750,
+      "dose3_children": 682,
+      "coverage_pct": 81.38,
+      "dropout_pct": 9.07,
+      "missed_dose3": 156
+    }
+  ],
+  "matches_sql": true,
+  "yarn": {
+    "application_id": "demo_app_2a91fd67bb",
+    "state": "FINISHED",
+    "final_status": "SUCCEEDED",
+    "resource_units": "logical CPU and MiB for the teaching scheduler",
+    "nodes": {
+      "NM1": {
+        "cpu": 1,
+        "memory_mb": 1024,
+        "used_cpu": 0,
+        "used_memory_mb": 0
+      },
+      "NM2": {
+        "cpu": 1,
+        "memory_mb": 1024,
+        "used_cpu": 0,
+        "used_memory_mb": 0
+      },
+      "NM3": {
+        "cpu": 1,
+        "memory_mb": 1024,
+        "used_cpu": 0,
+        "used_memory_mb": 0
+      }
+    },
+    "containers": {
+      "container_001": {
+        "task": "ApplicationMaster",
+        "node": "NM1",
+        "cpu": 1,
+        "memory_mb": 256,
+        "active": false
+      },
+      "container_002": {
+        "task": "Mapper A",
+        "node": "NM2",
+        "cpu": 1,
+        "memory_mb": 512,
+        "active": false
+      },
+      "container_003": {
+        "task": "Mapper B",
+        "node": "NM3",
+        "cpu": 1,
+        "memory_mb": 512,
+        "active": false
+      },
+      "container_004": {
+        "task": "Reducer",
+        "node": "NM2",
+        "cpu": 1,
+        "memory_mb": 512,
+        "active": false
+      }
+    },
+    "events": [
+      {
+        "sequence": 1,
+        "actor": "ResourceManager",
+        "event": "SUBMITTED",
+        "detail": "demo_app_2a91fd67bb",
+        "elapsed_ms": 0.005,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 2,
+        "actor": "ResourceManager",
+        "event": "ACCEPTED",
+        "detail": "ApplicationMaster requested",
+        "elapsed_ms": 0.068,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 3,
+        "actor": "ResourceManager",
+        "event": "ALLOCATED",
+        "detail": "container_001: ApplicationMaster @ NM1; CPU=1, RAM=256 MiB",
+        "elapsed_ms": 0.097,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 4,
+        "actor": "NM1",
+        "event": "LAUNCHED",
+        "detail": "container_001: ApplicationMaster",
+        "elapsed_ms": 0.112,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 5,
+        "actor": "ApplicationMaster",
+        "event": "RUNNING",
+        "detail": "demo_app_2a91fd67bb",
+        "elapsed_ms": 0.125,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 6,
+        "actor": "ApplicationMaster",
+        "event": "REQUESTED",
+        "detail": "Mapper A; CPU=1, RAM=512 MiB",
+        "elapsed_ms": 0.151,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 7,
+        "actor": "ApplicationMaster",
+        "event": "REQUESTED",
+        "detail": "Mapper B; CPU=1, RAM=512 MiB",
+        "elapsed_ms": 0.164,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 8,
+        "actor": "ResourceManager",
+        "event": "ALLOCATED",
+        "detail": "container_002: Mapper A @ NM2; CPU=1, RAM=512 MiB",
+        "elapsed_ms": 0.251,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 9,
+        "actor": "NM2",
+        "event": "LAUNCHED",
+        "detail": "container_002: Mapper A",
+        "elapsed_ms": 0.267,
+        "utc": "2026-10-12T10:55:20.289170+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 10,
+        "actor": "ResourceManager",
+        "event": "ALLOCATED",
+        "detail": "container_003: Mapper B @ NM3; CPU=1, RAM=512 MiB",
+        "elapsed_ms": 1.956,
+        "utc": "2026-10-12T10:55:20.291343+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          }
+        }
+      },
+      {
+        "sequence": 11,
+        "actor": "NM3",
+        "event": "LAUNCHED",
+        "detail": "container_003: Mapper B",
+        "elapsed_ms": 1.981,
+        "utc": "2026-10-12T10:55:20.291343+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          }
+        }
+      },
+      {
+        "sequence": 12,
+        "actor": "NM2",
+        "event": "COMPLETED",
+        "detail": "container_002: Mapper A; resource released",
+        "elapsed_ms": 207.996,
+        "utc": "2026-10-12T10:55:20.496804+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          }
+        }
+      },
+      {
+        "sequence": 13,
+        "actor": "NM3",
+        "event": "COMPLETED",
+        "detail": "container_003: Mapper B; resource released",
+        "elapsed_ms": 208.039,
+        "utc": "2026-10-12T10:55:20.496804+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 14,
+        "actor": "MapReduce",
+        "event": "SHUFFLE_SORT",
+        "detail": "Group records by province|district after both maps complete",
+        "elapsed_ms": 208.406,
+        "utc": "2026-10-12T10:55:20.496804+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 15,
+        "actor": "ApplicationMaster",
+        "event": "REQUESTED",
+        "detail": "Reducer; CPU=1, RAM=512 MiB",
+        "elapsed_ms": 225.456,
+        "utc": "2026-10-12T10:55:20.514877+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 16,
+        "actor": "ResourceManager",
+        "event": "ALLOCATED",
+        "detail": "container_004: Reducer @ NM2; CPU=1, RAM=512 MiB",
+        "elapsed_ms": 225.602,
+        "utc": "2026-10-12T10:55:20.514877+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 17,
+        "actor": "NM2",
+        "event": "LAUNCHED",
+        "detail": "container_004: Reducer",
+        "elapsed_ms": 225.618,
+        "utc": "2026-10-12T10:55:20.514877+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 512
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 18,
+        "actor": "NM2",
+        "event": "COMPLETED",
+        "detail": "container_004: Reducer; resource released",
+        "elapsed_ms": 330.053,
+        "utc": "2026-10-12T10:55:20.619044+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 1,
+            "used_memory_mb": 256
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 19,
+        "actor": "NM1",
+        "event": "COMPLETED",
+        "detail": "container_001: ApplicationMaster; resource released",
+        "elapsed_ms": 330.178,
+        "utc": "2026-10-12T10:55:20.619044+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      },
+      {
+        "sequence": 20,
+        "actor": "ResourceManager",
+        "event": "FINISHED",
+        "detail": "SUCCEEDED",
+        "elapsed_ms": 330.192,
+        "utc": "2026-10-12T10:55:20.619044+00:00",
+        "resources": {
+          "NM1": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM2": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          },
+          "NM3": {
+            "cpu": 1,
+            "memory_mb": 1024,
+            "used_cpu": 0,
+            "used_memory_mb": 0
+          }
+        }
+      }
+    ]
+  },
+  "native_yarn": "NOT RUN"
+}

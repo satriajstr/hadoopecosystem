@@ -1,0 +1,16 @@
+{
+  "verified_date": "2026-10-11",
+  "real_region_pairs_verified": 24,
+  "profile_non_geography_fields_unchanged": true,
+  "vaccination_event_bytes_unchanged": true,
+  "who_snapshot_unchanged": true,
+  "geography_names_source": "https://sirusa.web.bps.go.id/metadata/kegiatan/2999f8ef-4f55-dcfc-0fdc-a06896d96644",
+  "children": 30000,
+  "events": 41550,
+  "cohort": 7500,
+  "missed_dose3": 3625,
+  "hdfs_blocks": 361,
+  "replacement_replicas": 241,
+  "sql_mapreduce_match": true,
+  "presentation_and_documentation_names_consistent": true
+}

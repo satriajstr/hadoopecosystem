@@ -1,0 +1,618 @@
+{
+  "application_id": "demo_app_2a91fd67bb",
+  "state": "FINISHED",
+  "final_status": "SUCCEEDED",
+  "resource_units": "logical CPU and MiB for the teaching scheduler",
+  "nodes": {
+    "NM1": {
+      "cpu": 1,
+      "memory_mb": 1024,
+      "used_cpu": 0,
+      "used_memory_mb": 0
+    },
+    "NM2": {
+      "cpu": 1,
+      "memory_mb": 1024,
+      "used_cpu": 0,
+      "used_memory_mb": 0
+    },
+    "NM3": {
+      "cpu": 1,
+      "memory_mb": 1024,
+      "used_cpu": 0,
+      "used_memory_mb": 0
+    }
+  },
+  "containers": {
+    "container_001": {
+      "task": "ApplicationMaster",
+      "node": "NM1",
+      "cpu": 1,
+      "memory_mb": 256,
+      "active": false
+    },
+    "container_002": {
+      "task": "Mapper A",
+      "node": "NM2",
+      "cpu": 1,
+      "memory_mb": 512,
+      "active": false
+    },
+    "container_003": {
+      "task": "Mapper B",
+      "node": "NM3",
+      "cpu": 1,
+      "memory_mb": 512,
+      "active": false
+    },
+    "container_004": {
+      "task": "Reducer",
+      "node": "NM2",
+      "cpu": 1,
+      "memory_mb": 512,
+      "active": false
+    }
+  },
+  "events": [
+    {
+      "sequence": 1,
+      "actor": "ResourceManager",
+      "event": "SUBMITTED",
+      "detail": "demo_app_2a91fd67bb",
+      "elapsed_ms": 0.005,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 2,
+      "actor": "ResourceManager",
+      "event": "ACCEPTED",
+      "detail": "ApplicationMaster requested",
+      "elapsed_ms": 0.068,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 3,
+      "actor": "ResourceManager",
+      "event": "ALLOCATED",
+      "detail": "container_001: ApplicationMaster @ NM1; CPU=1, RAM=256 MiB",
+      "elapsed_ms": 0.097,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 4,
+      "actor": "NM1",
+      "event": "LAUNCHED",
+      "detail": "container_001: ApplicationMaster",
+      "elapsed_ms": 0.112,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 5,
+      "actor": "ApplicationMaster",
+      "event": "RUNNING",
+      "detail": "demo_app_2a91fd67bb",
+      "elapsed_ms": 0.125,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 6,
+      "actor": "ApplicationMaster",
+      "event": "REQUESTED",
+      "detail": "Mapper A; CPU=1, RAM=512 MiB",
+      "elapsed_ms": 0.151,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 7,
+      "actor": "ApplicationMaster",
+      "event": "REQUESTED",
+      "detail": "Mapper B; CPU=1, RAM=512 MiB",
+      "elapsed_ms": 0.164,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 8,
+      "actor": "ResourceManager",
+      "event": "ALLOCATED",
+      "detail": "container_002: Mapper A @ NM2; CPU=1, RAM=512 MiB",
+      "elapsed_ms": 0.251,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 9,
+      "actor": "NM2",
+      "event": "LAUNCHED",
+      "detail": "container_002: Mapper A",
+      "elapsed_ms": 0.267,
+      "utc": "2026-10-12T10:55:20.289170+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 10,
+      "actor": "ResourceManager",
+      "event": "ALLOCATED",
+      "detail": "container_003: Mapper B @ NM3; CPU=1, RAM=512 MiB",
+      "elapsed_ms": 1.956,
+      "utc": "2026-10-12T10:55:20.291343+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        }
+      }
+    },
+    {
+      "sequence": 11,
+      "actor": "NM3",
+      "event": "LAUNCHED",
+      "detail": "container_003: Mapper B",
+      "elapsed_ms": 1.981,
+      "utc": "2026-10-12T10:55:20.291343+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        }
+      }
+    },
+    {
+      "sequence": 12,
+      "actor": "NM2",
+      "event": "COMPLETED",
+      "detail": "container_002: Mapper A; resource released",
+      "elapsed_ms": 207.996,
+      "utc": "2026-10-12T10:55:20.496804+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        }
+      }
+    },
+    {
+      "sequence": 13,
+      "actor": "NM3",
+      "event": "COMPLETED",
+      "detail": "container_003: Mapper B; resource released",
+      "elapsed_ms": 208.039,
+      "utc": "2026-10-12T10:55:20.496804+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 14,
+      "actor": "MapReduce",
+      "event": "SHUFFLE_SORT",
+      "detail": "Group records by province|district after both maps complete",
+      "elapsed_ms": 208.406,
+      "utc": "2026-10-12T10:55:20.496804+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 15,
+      "actor": "ApplicationMaster",
+      "event": "REQUESTED",
+      "detail": "Reducer; CPU=1, RAM=512 MiB",
+      "elapsed_ms": 225.456,
+      "utc": "2026-10-12T10:55:20.514877+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 16,
+      "actor": "ResourceManager",
+      "event": "ALLOCATED",
+      "detail": "container_004: Reducer @ NM2; CPU=1, RAM=512 MiB",
+      "elapsed_ms": 225.602,
+      "utc": "2026-10-12T10:55:20.514877+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 17,
+      "actor": "NM2",
+      "event": "LAUNCHED",
+      "detail": "container_004: Reducer",
+      "elapsed_ms": 225.618,
+      "utc": "2026-10-12T10:55:20.514877+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 512
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 18,
+      "actor": "NM2",
+      "event": "COMPLETED",
+      "detail": "container_004: Reducer; resource released",
+      "elapsed_ms": 330.053,
+      "utc": "2026-10-12T10:55:20.619044+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 1,
+          "used_memory_mb": 256
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 19,
+      "actor": "NM1",
+      "event": "COMPLETED",
+      "detail": "container_001: ApplicationMaster; resource released",
+      "elapsed_ms": 330.178,
+      "utc": "2026-10-12T10:55:20.619044+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    },
+    {
+      "sequence": 20,
+      "actor": "ResourceManager",
+      "event": "FINISHED",
+      "detail": "SUCCEEDED",
+      "elapsed_ms": 330.192,
+      "utc": "2026-10-12T10:55:20.619044+00:00",
+      "resources": {
+        "NM1": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM2": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        },
+        "NM3": {
+          "cpu": 1,
+          "memory_mb": 1024,
+          "used_cpu": 0,
+          "used_memory_mb": 0
+        }
+      }
+    }
+  ]
+}

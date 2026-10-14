@@ -1,0 +1,35 @@
+{
+  "verified_utc": "2026-10-12T10:56:35.128032+00:00",
+  "previous_children": 80000,
+  "children": 80137,
+  "vaccination_events": 112931,
+  "provinces": 12,
+  "districts": 24,
+  "real_region_pairs_verified": 24,
+  "eligible_children": 20035,
+  "dose1_children": 14471,
+  "dose3_children": 10655,
+  "missed_dose3": 9380,
+  "profiles_and_history_consistent": true,
+  "unique_district_coverage_percentages": 24,
+  "unique_numeric_dropout_percentages": 23,
+  "tsv_matches_csv": true,
+  "slightly_varied_group_sizes": true,
+  "default_lookup_preserved": true,
+  "who_snapshot_unchanged": true,
+  "mapper_input_rows": [
+    40069,
+    40068
+  ],
+  "mapper_selected_rows": [
+    10015,
+    10020
+  ],
+  "sql_mapreduce_match": true,
+  "hdfs_blocks": 962,
+  "replacement_replicas": 641,
+  "manual_cli_session": "20261012-175331-ionxdp8d",
+  "backup_directory": "tmp/before-unique-percentages",
+  "native_execution": "NOT RUN",
+  "browser_rendering": "NOT RUN"
+}
